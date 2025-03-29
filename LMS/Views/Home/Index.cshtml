@@ -2,7 +2,61 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="d-flex justify-content-center align-items-center vh-100 text-center">
+    <div class="welcome-card p-5">
+        <h1 class="fw-bold display-4 text-light">🚀 Welcome to <span class="text-warning">Kallu LMS</span></h1>
+        <h3 class="text-light fst-italic">Your gateway to knowledge & learning.</h3>
+        <h4 class="text-light">Manage, access, and explore courses with ease.</h4>
+        
+        <div class="m-4 w-50 mx-auto">
+            <form class="d-flex search-box" role="search">
+                <input class="form-control me-2 rounded-pill" type="search" placeholder="🔍 Search Courses..." aria-label="Search">
+                <button class="btn btn-warning btn-lg rounded-pill px-4" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .welcome-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+    .welcome-card:hover {
+        transform: scale(1.02);
+    }
+    h1, h3, h4 {
+        animation: fadeIn 1s ease-in-out;
+    }
+    .search-box input {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+    }
+    .search-box input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+</style>
+
+
+
+ @*    <h3 class="mx-2">Available Courses:</h3>
+<div class="w-100 d-flex flex-wrap mt-4">
+    @for (int i = 0; i < 10; i++)
+    {
+        <div class="card mx-2 mb-4 mt-2" style="width: 18rem;">
+            <img src="https://m.media-amazon.com/images/I/81bsw6fnUiL._SY466_.jpg" class="card-img-top h-75" alt="book">
+            <div class="card-body">
+                <h5 class="card-title">Course Code</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark btn-primary">Enroll</a>
+            </div>
+        </div>
+    }
+</div> *@

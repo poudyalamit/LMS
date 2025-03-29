@@ -3,27 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\LMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/localhost_1433/LMS_NEW/SA/SqlTable/dbo.AspNetRoles.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250329113018_roles-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LMS\\Data\\Migrations\\20250329113018_roles-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,81 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "dbo.AspNetRoles [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/localhost_1433/LMS_NEW/SA/SqlTable/dbo.AspNetRoles.sql",
-              "ToolTip": "dbo.AspNetRoles [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-29T11:30:48.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20250329113018_roles-added.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250329113018_roles-added.cs",
-              "RelativeDocumentMoniker": "LMS\\Data\\Migrations\\20250329113018_roles-added.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250329113018_roles-added.cs",
-              "RelativeToolTip": "LMS\\Data\\Migrations\\20250329113018_roles-added.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T11:30:19.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Program.cs",
-              "RelativeDocumentMoniker": "LMS\\Program.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Program.cs",
-              "RelativeToolTip": "LMS\\Program.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEgAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T11:25:40.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Register.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeDocumentMoniker": "LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeToolTip": "LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAA7wH4AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T11:22:21.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "LMS\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAASAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "LMS\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "LMS\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-29T11:21:43.772Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\.env",
-              "RelativeDocumentMoniker": "LMS\\.env",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\.env",
-              "RelativeToolTip": "LMS\\.env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-29T11:20:42.768Z",
+              "WhenOpened": "2025-03-29T11:47:53.632Z",
               "EditorCaption": ""
             },
             {
