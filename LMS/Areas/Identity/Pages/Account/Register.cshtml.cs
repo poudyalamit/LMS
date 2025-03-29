@@ -97,6 +97,11 @@ namespace LMS.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Role")]
+            public string Role { get; set; }
         }
 
 
@@ -117,8 +122,9 @@ namespace LMS.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                var role = await _userManager.AddToRoleAsync(user, Input.Role);
 
-                if (result.Succeeded)
+                if (result.Succeeded && role.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
