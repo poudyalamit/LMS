@@ -8,14 +8,14 @@
         var user = await UserManager.GetUserAsync(User);
         var role = await UserManager.GetRolesAsync(user);
         <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <a  class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
         <li class="nav-item">
-            <span class="nav-link text-dark"> @string.Join(", ", role)</span>
+            <span class="nav-link text-light"> @string.Join(", ", role)</span>
         </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            <button  type="submit" class="nav-link btn btn-link text-light">Logout</button>
         </form>
     </li>
 }

@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Course Page";
+}
+    <title>Available Courses</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+        }
+
+        .course-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+            width: 18rem;
+        }
+
+            .course-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .course-card img {
+                height: 250px;
+                object-fit: cover;
+            }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .enroll-btn {
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            border-radius: 20px;
+            transition: background 0.3s ease-in-out;
+        }
+
+            .enroll-btn:hover {
+                background-color: #ffdb4d;
+            }
+    </style>
+    <div class="course-container">
+        <h3 class="text-center fw-bold mb-4">🚀 Available Courses</h3>
+        <div class="d-flex flex-wrap justify-content-center">
+            @for (int i = 0; i < 10; i++)
+            {
+                <div class="card course-card mx-3 mb-4">
+                    <img src="https://m.media-amazon.com/images/I/81bsw6fnUiL._SY466_.jpg" class="card-img-top" alt="book">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Course Code</h5>
+                        <p class="card-text">Expand your knowledge with this amazing course!</p>
+                        <a href="#" class="btn enroll-btn px-4">Enroll Now</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
