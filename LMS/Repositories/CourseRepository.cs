@@ -4,7 +4,17 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LMS.Repositories
 {
-    public class CourseRepository
+    public interface ICourseRepository
+    {
+        IEnumerable<Course> GetAllCourses();
+        Course GetCourseByCode(string Code);
+        Task AddCourse(Course course);
+        Task UpdateCourse(Course course);
+        Task DeleteCourse(Course course);
+        Task<Course> GetCourseById(int id);
+    }
+
+    public class CourseRepository : ICourseRepository
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<IdentityUser> _userManager;
@@ -55,4 +65,6 @@ namespace LMS.Repositories
 
 
     }
+
+
 }
