@@ -28,7 +28,7 @@ namespace LMS.Controllers
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
-        private string GetUserId()
+        private string GetUser()
         {
             var user = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
             return user;
@@ -37,7 +37,9 @@ namespace LMS.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Courses.ToListAsync());
+            var userId = GetUser();
+            var courses = await _context.Courses.Where(c => c.TeacherId == userId).ToListAsync();
+            return View(courses);
         }
 
         // GET: Courses/Details/5
@@ -73,7 +75,7 @@ namespace LMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                course.TeacherId = GetUserId();
+                course.TeacherId = GetUser();
                 _context.Add(course);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,8 +90,8 @@ namespace LMS.Controllers
             {
                 return NotFound();
             }
-
-            var course = await _context.Courses.FindAsync(id);
+            var user = GetUser();
+            var course = await _context.Courses.FirstOrDefaultAsync(c => c.TeacherId == user && c.Id == id);
             if (course == null)
             {
                 return NotFound();
@@ -102,17 +104,18 @@ namespace LMS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Code,Description")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Code,Description,TeacherId")] Course course)
         {
             if (id != course.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
+                    course.TeacherId = GetUser();
                     _context.Update(course);
                     await _context.SaveChangesAsync();
                 }
@@ -140,8 +143,10 @@ namespace LMS.Controllers
                 return NotFound();
             }
 
+            var user = GetUser();
+
             var course = await _context.Courses
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == id && m.TeacherId == user);
             if (course == null)
             {
                 return NotFound();
