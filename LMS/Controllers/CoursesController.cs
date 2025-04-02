@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LMS.Controllers
 {
-    [Authorize(Roles = "Teacher")]
+
     public class CoursesController : Controller
     {
 
@@ -34,11 +34,17 @@ namespace LMS.Controllers
             return user;
         }
 
+        [Authorize(Roles = "Teacher,Admin")]
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            var userId = GetUser();
-            var courses = await _context.Courses.Where(c => c.TeacherId == userId).ToListAsync();
+            var user = GetUser();
+            var courses = await _context.Courses.Where(c => c.TeacherId == user).ToListAsync();
+            if (User.IsInRole("Admin"))
+            {
+                var course = await _context.Courses.ToListAsync();
+                return View(course);
+            }
             return View(courses);
         }
 
@@ -60,6 +66,7 @@ namespace LMS.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Teacher")]
         // GET: Courses/Create
         public IActionResult Create()
         {
@@ -83,6 +90,7 @@ namespace LMS.Controllers
                 return View(course);
         }
 
+        [Authorize(Roles = "Teacher")]
         // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -99,6 +107,7 @@ namespace LMS.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Teacher")]
         // POST: Courses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -111,7 +120,7 @@ namespace LMS.Controllers
                 return NotFound();
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || ModelState.IsValid)
             {
                 try
                 {
@@ -135,6 +144,7 @@ namespace LMS.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Teacher")]
         // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -155,6 +165,7 @@ namespace LMS.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Teacher")]
         // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
