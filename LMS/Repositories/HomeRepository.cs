@@ -16,7 +16,7 @@ namespace LMS.Repositories
         public async Task<IEnumerable<Course>> GetAllCourses(string s = "")
         {
             s = s.ToLower();
-            IEnumerable<Course> courses = await _context.Courses.Where(c => c.Title.ToLower().Contains(s) || c.Code.ToLower().Contains(s)).ToListAsync();
+            IEnumerable<Course> courses = await _context.Courses.Where(c => c.Title.ToLower().Contains(s) || c.Code.ToLower().Contains(s) || c.TeacherId.ToLower().Contains(s)).ToListAsync();
             return courses;
         }
     }

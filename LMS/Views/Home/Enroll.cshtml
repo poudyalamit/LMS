@@ -11,27 +11,26 @@
         }
 
         .course-container {
-            max-width: 1200px;
+            max-width: 1500px;
             margin: auto;
             padding: 20px;
         }
 
-        .course-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 15px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            overflow: hidden;
-            width: 18rem;
+    .course-card {
+        width: 24rem; 
+        background-color: rgba(255, 255, 255, 0.05);
+        color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .course-card:hover {
+            transform: scale(1.02);
         }
 
-            .course-card:hover {
-                transform: scale(1.05);
-                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-            }
-
             .course-card img {
-                height: 250px;
+                height: 150px;
                 object-fit: cover;
             }
 
@@ -49,10 +48,18 @@
 
             .enroll-btn:hover {
                 background-color: #ffdb4d;
+                color: #000;
             }
     </style>
     <div class="course-container">
-        <h3 class="text-center fw-bold mb-4">🚀 Available Courses</h3>
+        <div class="m-5 w-50 mx-auto">
+            <form class="d-flex search-box" role="search">
+                <input class="form-control me-2 rounded-pill" type="search" id="s" name="s" value="@Model.s" placeholder="🔍 Search Courses..." aria-label="Search">
+                <button class="btn btn-warning btn-lg rounded-pill px-4" type="submit">Search</button>
+                <a class="btn btn-warning btn-lg rounded-pill px-4 mx-2" type="button" href="/home/enroll">Clear</a>
+            </form>
+        </div>
+        <h3 class="text-center fw-bold mb-4">🚀 All Available Courses</h3>
         <div class="d-flex flex-wrap justify-content-center">
             @foreach (var course in Model.Courses)
             {
@@ -62,6 +69,7 @@
                     <div class="card-body">
                     <h4 class="card-title text-warning">@course.Code : @course.Title.ToString()</h4>
                         <h5 class="card-text">@course.Description.ToString()</h5>
+                        <h5 class="card-text">Offered By: @course.TeacherId</h5>
                         <a href="#" class="btn enroll-btn px-4">Enroll Now</a>
                     </div>
                 </div>

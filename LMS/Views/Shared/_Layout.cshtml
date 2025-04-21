@@ -37,11 +37,15 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container text-black">
-            &copy; 2025 - LMS - <a class="text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="custom-footer py-3">
+        <div class="container text-center">
+            <span class="fw-bold text-light">
+                &copy; 2025 - LMS -
+                <a class="text-warning fw-bold text-decoration-none" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </span>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
