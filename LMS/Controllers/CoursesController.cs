@@ -38,8 +38,8 @@ namespace LMS.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            var user = GetUser();
-            var courses = await _context.Courses.Where(c => c.TeacherId == user).ToListAsync();
+            var user =  GetUser();
+            var courses =  _context.Courses.Where(c => c.TeacherId == user).ToListAsync();
             if (User.IsInRole("Admin"))
             {
                 var course = await _context.Courses.ToListAsync();
@@ -80,7 +80,7 @@ namespace LMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Code,Description")] Course course)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || !ModelState.IsValid)
             {
                 course.TeacherId = GetUser();
                 _context.Add(course);

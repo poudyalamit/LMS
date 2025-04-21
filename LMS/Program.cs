@@ -3,6 +3,7 @@ using LMS;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using LMS.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<IHomeRepository, HomeRepository>(); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
