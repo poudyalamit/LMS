@@ -46,3 +46,18 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+.solid-navbar {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Solid gradient */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+    .solid-navbar .navbar-brand,
+    .solid-navbar .nav-link {
+        color: white !important;
+        font-weight: 500;
+    }
+
+        .solid-navbar .nav-link:hover {
+            color: #ffc107 !important; /* Highlight on hover */
+        }
