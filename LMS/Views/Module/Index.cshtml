@@ -1,7 +1,21 @@
-﻿
+﻿@model DisplayModules
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Module</h1>
-
+<h1 class="m-5">Module()</h1>
+    <div class="d-flex flex-wrap justify-content-center">
+            @foreach (var course in Model.Moudles)
+            {
+                <div class="card course-card mx-3 mb-4">
+                   @* will make the image settings later *@
+                     <img src="" class="card-img-top" alt="book"> 
+                    <div class="card-body">
+                    <h4 class="card-title text-warning">@course.Code : @course.Title.ToString()</h4>
+                        <h5 class="card-text">@course.Description.ToString()</h5>
+                        <h5 class="card-text">Offered By: @course.TeacherId</h5>
+                        <a asp-controller="Module" asp-action="Index" asp-route-courseId="@course.Id" class="btn enroll-btn px-4">Enroll Now</a>
+                    </div>
+                </div>
+            }
+        </div>

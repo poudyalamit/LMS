@@ -22,7 +22,8 @@ namespace LMS.Repositories
 
         public async Task<IEnumerable<Module>> GetModulesByCourseId(int courseId)
         {
-            return await _context.Modules.Where(m => m.CourseId == courseId).ToListAsync();
+            IEnumerable<Module> modules = await _context.Modules.Where(m => m.CourseId == courseId).ToListAsync();
+            return modules;
         }
 
         public async Task<Module?> GetModuleById(int id)
@@ -42,6 +43,10 @@ namespace LMS.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public Task<string?> GetModulesByCourseId()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public interface IModuleRepository
@@ -51,6 +56,5 @@ namespace LMS.Repositories
         Task<Module?> GetModuleById(int id);
         Task UpdateModule(Module module);
         Task DeleteModule(Module module);
-
     }
 }

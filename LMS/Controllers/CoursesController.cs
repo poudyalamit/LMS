@@ -39,7 +39,7 @@ namespace LMS.Controllers
         public async Task<IActionResult> Index()
         {
             var user =  GetUser();
-            var courses =  _context.Courses.Where(c => c.TeacherId == user).ToListAsync();
+            var courses = await _context.Courses.Where(c => c.TeacherId == user).ToListAsync();
             if (User.IsInRole("Admin"))
             {
                 var course = await _context.Courses.ToListAsync();

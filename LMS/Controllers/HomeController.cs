@@ -29,7 +29,7 @@ namespace LMS.Controllers
         public async  Task<IActionResult> Enroll(string s= "")
         {
             IEnumerable<Course> courses = await _homeRepository.GetAllCourses(s);
-            DisplayCourse displayCourse = new DisplayCourse
+            DisplayCourses displayCourse = new DisplayCourses
             {
                 Courses = courses,
                 s = s
