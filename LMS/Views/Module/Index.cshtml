@@ -1,20 +1,29 @@
 ﻿@model IEnumerable<Module>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Modules";
 }
 
-<h1 class="m-5">Module()</h1>
- 
-<div>
+<div class="d-flex justify-content-start mb-4">
+    <a href="@Url.Action("Index", "Course")" class="btn btn-outline-primary fw-bold">
+        ← Back to Courses
+    </a>
+</div>
+
+<h2 class="shadow-sm" style="margin-left: 45%; margin-bottom: 20px">Available Modules</h2>
+
+<div class="d-flex flex-column gap-4">
     @foreach (var module in Model)
     {
-        <div>
-            <p>@module.Id</p>
-            <p>@module.Title</p>
-            <p>@module.CourseId</p>
-            <p>@module.Description</p>
-            <p>@module.ResourceUrl</p>
+        <div class="card mx-auto shadow-lg border-0" style="max-width: 850px;">
+            <div class="card">
+                <img src="https://t4.ftcdn.net/jpg/05/07/96/47/360_F_507964735_z6P15jAQKZlyB8hogo2Pei9WI3DiUpcO.jpg" class="card-img-bottom" style="height: 200px" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@module.Title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
         </div>
     }
-
 </div>
