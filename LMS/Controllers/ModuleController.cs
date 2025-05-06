@@ -21,11 +21,7 @@ namespace LMS.Controllers
         public async Task<IActionResult> Index(int courseId)
         {
             IEnumerable<Module> modules = await _moduleRepo.GetModulesByCourseId(courseId);
-            DisplayModules displayModules = new DisplayModules
-            {
-                Modules = modules
-            };
-            return View(displayModules);
+            return View(modules);
         }
 
         public IActionResult AddModule()
