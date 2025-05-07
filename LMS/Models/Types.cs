@@ -8,5 +8,6 @@ namespace LMS.Models
         [Required]
         [MaxLength(20)]
         public string? TypeName { get; set; }
+        public Module? Module { get; set; }
     }
 }

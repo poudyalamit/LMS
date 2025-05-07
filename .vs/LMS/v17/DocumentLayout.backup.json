@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\LMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\module\\addmodule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\module\\addmodule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddModule.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\AddModule.cshtml",
+              "RelativeDocumentMoniker": "LMS\\Views\\Module\\AddModule.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\AddModule.cshtml",
+              "RelativeToolTip": "LMS\\Views\\Module\\AddModule.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-07T19:13:46.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ModuleRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
+              "RelativeDocumentMoniker": "LMS\\Repositories\\ModuleRepository.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
+              "RelativeToolTip": "LMS\\Repositories\\ModuleRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T17:23:26.083Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

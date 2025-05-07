@@ -10,18 +10,33 @@
     </a>
 </div>
 
-<h2 class="shadow-sm" style="margin-left: 45%; margin-bottom: 20px">Available Modules</h2>
+<h2 class="shadow-none" style="margin-left: 44%; margin-bottom: 20px">Available Modules</h2>
 
 <div class="d-flex flex-column gap-4">
     @foreach (var module in Model)
     {
+          @* Icons must be added later to show the type of modules *@
         <div class="card mx-auto shadow-lg border-0" style="max-width: 850px;">
             <div class="card">
-                <img src="https://t4.ftcdn.net/jpg/05/07/96/47/360_F_507964735_z6P15jAQKZlyB8hogo2Pei9WI3DiUpcO.jpg" class="card-img-bottom" style="height: 200px" alt="...">
+                <img src="images/@(module?.Type?.TypeName).jpg" class="card-img-top" style="height: 200px; width:800px; object-fit: cover;" alt="@module?.Type?.TypeName">
                 <div class="card-body">
-                    <h5 class="card-title">@module.Title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">@module?.Title</h5>
+                    <p class="card-text">@module?.Description</p>
+                <a class="btn" style="background-color:blue; color: white; font:bolder; position: absolute; right: 10px; bottom: 10px;">
+                    Details
+                </a>
+                    <p class="card-text mt-3">
+                        <small class="text-muted">
+                            Posted on: @{
+                                var createdAt = module.CreatedAt;
+                                var showYear = createdAt.Year != DateTime.Now.Year;
+                                var formattedDate = showYear
+                                ? createdAt.ToString("MMM dd yyyy, HH:mm")
+                                : createdAt.ToString("MMM dd, HH:mm");
+                            }
+                            @formattedDate
+                        </small>
+                    </p>
                 </div>
             </div>
         </div>

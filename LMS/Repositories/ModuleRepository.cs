@@ -22,7 +22,7 @@ namespace LMS.Repositories
 
         public async Task<IEnumerable<Module>> GetModulesByCourseId(int courseId)
         {
-            IEnumerable<Module> modules = await _context.Modules.Where(m => m.CourseId == courseId).ToListAsync();
+            IEnumerable<Module> modules = await _context.Modules.Where(m => m.CourseId == courseId).Include(m=>m.Type).ToListAsync();
             return modules;
         }
 

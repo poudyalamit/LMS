@@ -16,6 +16,13 @@ namespace LMS.Models
         public string? Description { get; set; }
         [MaxLength(100)]
         public string? ResourceUrl { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        [Required]
+        public int TypeId { get; set; }
+        public Types? Type { get; set; }
         public Course? Course { get; set; }
+
+        [NotMapped]
+        public string ?TypeName{ get; set; }
     }
 }
