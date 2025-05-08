@@ -3,6 +3,7 @@ using LMS.Models;
 using LMS.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,13 +21,16 @@ namespace LMS.Controllers
         }
         public async Task<IActionResult> Index(int courseId)
         {
+            ViewData["courseId"] = courseId;
             IEnumerable<Module> modules = await _moduleRepo.GetModulesByCourseId(courseId);
             return View(modules);
         }
 
-        public IActionResult AddModule()
+        public IActionResult AddModule(int courseId)
         {
-            return View();
+            var model = new Module { CourseId = courseId };
+            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
+            return View(model);
         }
 
         [HttpPost]

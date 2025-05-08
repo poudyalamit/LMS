@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\module\\addmodule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\controllers\\modulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\controllers\\modulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,26 +38,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ModuleController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\ModuleController.cs",
+              "RelativeDocumentMoniker": "LMS\\Controllers\\ModuleController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\ModuleController.cs",
+              "RelativeToolTip": "LMS\\Controllers\\ModuleController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T18:07:19.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\Index.cshtml",
+              "RelativeDocumentMoniker": "LMS\\Views\\Module\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\Index.cshtml",
+              "RelativeToolTip": "LMS\\Views\\Module\\Index.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T17:59:51.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AddModule.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\AddModule.cshtml",
               "RelativeDocumentMoniker": "LMS\\Views\\Module\\AddModule.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\AddModule.cshtml",
               "RelativeToolTip": "LMS\\Views\\Module\\AddModule.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-07T19:13:46.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ModuleRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
               "RelativeDocumentMoniker": "LMS\\Repositories\\ModuleRepository.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
               "RelativeToolTip": "LMS\\Repositories\\ModuleRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBwAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-07T17:23:26.083Z",
               "EditorCaption": ""
