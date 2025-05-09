@@ -47,6 +47,7 @@ namespace LMS.Controllers
         public async Task<IActionResult> EditModule(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);
+            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
             if (module == null)
             {
                 return NotFound();

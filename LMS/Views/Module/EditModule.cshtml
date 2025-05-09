@@ -1,19 +1,20 @@
 ﻿@model Module
 
 @{
-    ViewData["Title"] = "AddModule";
+    ViewData["Title"] = "EditModule";
 }
 
-<h1>AddModule</h1>
+<h1>EditModule</h1>
 
 <h4>Module</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AddModule">
+        <form asp-action="EditModule">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <input asp-for="CourseId" class="form-control" hidden/>
+                <input type="hidden" asp-for="CourseId"/>
                 <span asp-validation-for="CourseId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,10 +34,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TypeId" class="control-label"></label>
-                <select asp-for="TypeId" class ="form-control" asp-items="ViewBag.TypeId"></select>
+                <select asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeId"></select>
+                <span asp-validation-for="TypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

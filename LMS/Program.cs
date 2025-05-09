@@ -3,6 +3,7 @@ using LMS;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
+using LMS.Models;
 using LMS.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
