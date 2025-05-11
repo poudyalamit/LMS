@@ -11,6 +11,10 @@ namespace LMS.Models
         public int CourseId { get; set; }
         [Required]
         public string? StudentId { get; set; }
+        [Required]
+        public string? TeacherId { get; set; }
+        [Required]
+        public DateTime EnrollmentDate { get; set; } = DateTime.Now;
         public Course? Course { get; set; }
     }
 }

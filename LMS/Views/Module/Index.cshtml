@@ -4,18 +4,13 @@
     ViewData["Title"] = "Modules";
 }
 
-<div style="position: relative; margin-top: 70px; display: flex; align-items: center; justify-content: center;">
-    <h2 class="shadow-none text-warning">Available Modules</h2>
-    <a href="/home/enroll" class="btn btn-outline-warning fw-bold"
-       style="position: absolute; left: 0; margin-top:20px;">
+<div class="d-flex justify-content-between align-items-center mb-3 px-4" style="margin-top: 6%">
+    <a href="/home/enroll" class="btn btn-warning">
         ← Back to Courses
     </a>
-
-    <a asp-controller="Module" asp-action="AddModule" asp-route-courseId="@ViewData["courseId"]"
-       class="btn btn-outline-warning fw-bold"
-       style="position: absolute; margin-top:20px; right: 0; border-radius: 50%; padding: 10px 10px;"
-       data-bs-toggle="tooltip" data-bs-placement="top" title="Add Module">
-        <i class="fas fa-plus"></i>
+    <h2 class="text-primary m-0">Modules Available</h2>
+    <a asp-controller="Module" asp-action="AddModule" asp-route-courseId="@ViewData["courseId"]" class="btn btn-warning">
+        <i class="bi bi-plus-lg"></i> Add Course
     </a>
 </div>
 
