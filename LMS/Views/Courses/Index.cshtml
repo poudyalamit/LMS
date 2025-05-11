@@ -1,53 +1,42 @@
-﻿@model IEnumerable<LMS.Models.Course>
+﻿@model IEnumerable<Course>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Courses by Teacher";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-3 px-4" style="margin-top: 6%">
+    <a href="/home/index" class="btn btn-warning">
+        ← Back
+    </a>
+    <h2 class="text-primary m-0">Courses Offered</h2>
+    <a asp-action="Create" class="btn btn-warning">
+        <i class="bi bi-plus-lg"></i> Add Course
+    </a>
+</div>
 
-<p class="mt-5">
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TeacherId)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TeacherId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="d-flex flex-column align-items-center gap-4 px-3">
+    @foreach (var course in Model)
+    {
+        <div class="card shadow-sm" style="max-width: 800px; width: 100%;">
+            <div class="card-header bg-warning bg-opacity-25 fw-bold text-dark">
+                @course.Code - @course.Title
+            </div>
+            <div class="card-body bg-light">
+                <dl class="row mb-0">
+                    <dt class="col-sm-3 text-muted">Description</dt>
+                    <dd class="col-sm-9">@course.Description</dd>
+                </dl>
+            </div>
+            <div class="card-footer bg-white d-flex justify-content-end">
+                <a asp-action="Edit" asp-route-id="@course.Id" class="btn btn-warning btn-sm me-2">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <form asp-action="Delete" asp-route-id="@course.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash3-fill"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
