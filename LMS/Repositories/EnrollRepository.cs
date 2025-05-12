@@ -22,8 +22,14 @@
         [Authorize(Roles = "Teacher")]
         public async Task AddEnrollment(Enrollment enrollment)
         {
-            _context.Enrollments.Add(enrollment);
-            await _context.SaveChangesAsync();
+            var exists = await _context.Enrollments
+            .AnyAsync(e => e.StudentId == enrollment.StudentId && e.CourseId == enrollment.CourseId);
+
+            if (!exists)
+            {
+                _context.Enrollments.Add(enrollment);
+                await _context.SaveChangesAsync();
+            }
         }
 
         // This method is not used in the current implementation and this is not need to be used but maybe used in the future
@@ -38,7 +44,7 @@
             _context.Enrollments.Remove(enrollment);
             await _context.SaveChangesAsync();
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Teacher,Admin")]
         public async Task<IEnumerable<Enrollment>> GetEnrollmentsByCourseId(int courseId)
         {
             IEnumerable<Enrollment> enrollments = await _context.Enrollments
@@ -54,6 +60,14 @@
                 .ToListAsync();
             return enrollments;
         }
+
+        public async Task<IEnumerable<Enrollment>> GetEnrollmentByStudentId(string StudentId)
+        {
+            IEnumerable<Enrollment> enrollments = await _context.Enrollments
+                .Where(e => e.StudentId == StudentId)
+                .ToListAsync();
+            return enrollments;
+        }
     }
 
     public interface IEnrollRepository
@@ -64,5 +78,7 @@
         Task UpdateEnrollment(Enrollment enrollment);
         Task DeleteEnrollment(Enrollment enrollment);
         Task<IEnumerable<Enrollment>> GetEnrollmentsByCourseId(int courseId);
+        Task<IEnumerable<Enrollment>> GetEnrollmentByTeacherId(string TeacherId);
+        Task<IEnumerable<Enrollment>> GetEnrollmentByStudentId(string StudentId);
     }
 }

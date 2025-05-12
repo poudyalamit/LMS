@@ -1,0 +1,43 @@
+﻿# ASP.NET Core specific
+bin/
+obj/
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.cache
+*.dbmdl
+*.jfm
+
+# Logs
+logs/
+*.log
+!logs/.gitkeep
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Configuration files (Sensitive data)
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# Secrets
+secrets.json
+secrets/
+
+# Build files
+dist/
+publish/
+node_modules/
+wwwroot/
+bower_components/
+
+# Docker
+docker-compose.override.yml
+.dockerignore

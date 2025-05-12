@@ -21,6 +21,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IHomeRepository, HomeRepository>(); 
 builder.Services.AddTransient<IModuleRepository, ModuleRepository>(); 
+builder.Services.AddTransient<IEnrollRepository, EnrollRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

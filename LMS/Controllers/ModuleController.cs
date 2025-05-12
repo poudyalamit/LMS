@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Controllers
 {
-    [Authorize(Roles = "Teacher")]
     public class ModuleController : Controller
     {
         private readonly IModuleRepository _moduleRepo;
@@ -19,20 +18,21 @@ namespace LMS.Controllers
             _moduleRepo = moduleRepo;
             _context = context;
         }
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> Index(int courseId)
         {
             ViewData["courseId"] = courseId;
             IEnumerable<Module> modules = await _moduleRepo.GetModulesByCourseId(courseId);
             return View(modules);
         }
-
+        [Authorize(Roles = "Teacher")]
         public IActionResult AddModule(int courseId)
         {
             var model = new Module { CourseId = courseId };
             ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
             return View(model);
         }
-
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public async Task<IActionResult> AddModule(Module module)
         {
@@ -43,7 +43,7 @@ namespace LMS.Controllers
             }
             return View(module);
         }
-
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> EditModule(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);
@@ -54,6 +54,7 @@ namespace LMS.Controllers
             }
             return View(module);
         }
+        [Authorize(Roles = "Teacher")]
         [HttpPost]
         public async Task<IActionResult> EditModule(Module module)
         {
@@ -64,7 +65,7 @@ namespace LMS.Controllers
             }
             return View(module);
         }
-
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> DeleteModule(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);
@@ -74,6 +75,7 @@ namespace LMS.Controllers
             }
             return View(module);
         }
+        [Authorize(Roles = "Teacher")]
         [HttpPost, ActionName("DeleteModule")]
         public async Task<IActionResult> DeleteModuleConfirmed(int id)
         {

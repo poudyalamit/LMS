@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\LMS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\models\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\models\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\controllers\\enrollcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\controllers\\enrollcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\repositories\\enrollrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\repositories\\enrollrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\controllers\\modulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\controllers\\modulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\repositories\\modulerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\home\\enroll.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\home\\enroll.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\courses\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\courses\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|c:\\users\\asus\\source\\repos\\lms\\lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E606268A-6DB0-4C8A-B2DC-9679B2E91ED0}|LMS\\LMS.csproj|solutionrelative:lms\\views\\module\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,34 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250511204937_teacherid and enrolled-date .cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs",
-              "RelativeDocumentMoniker": "LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs",
-              "RelativeToolTip": "LMS\\Data\\Migrations\\20250511204937_teacherid and enrolled-date .cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T20:49:38.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Enrollment.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Models\\Enrollment.cs",
-              "RelativeDocumentMoniker": "LMS\\Models\\Enrollment.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Models\\Enrollment.cs",
-              "RelativeToolTip": "LMS\\Models\\Enrollment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T20:48:06.446Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -81,79 +51,93 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "LMS\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "LMS\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Program.cs",
+              "RelativeDocumentMoniker": "LMS\\Program.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Program.cs",
+              "RelativeToolTip": "LMS\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T20:27:54.953Z",
+              "WhenOpened": "2025-05-12T18:55:38.611Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ModuleRepository.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
-              "RelativeDocumentMoniker": "LMS\\Repositories\\ModuleRepository.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\ModuleRepository.cs",
-              "RelativeToolTip": "LMS\\Repositories\\ModuleRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T20:25:33.01Z",
+              "Title": "Enroll.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Home\\Enroll.cshtml",
+              "RelativeDocumentMoniker": "LMS\\Views\\Home\\Enroll.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Home\\Enroll.cshtml",
+              "RelativeToolTip": "LMS\\Views\\Home\\Enroll.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEgAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-12T18:43:28.372Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ModuleController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\ModuleController.cs",
+              "RelativeDocumentMoniker": "LMS\\Controllers\\ModuleController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\ModuleController.cs",
+              "RelativeToolTip": "LMS\\Controllers\\ModuleController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwE4AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T17:42:39.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnrollController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\EnrollController.cs",
+              "RelativeDocumentMoniker": "LMS\\Controllers\\EnrollController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Controllers\\EnrollController.cs",
+              "RelativeToolTip": "LMS\\Controllers\\EnrollController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T17:41:18.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "EnrollRepository.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\EnrollRepository.cs",
               "RelativeDocumentMoniker": "LMS\\Repositories\\EnrollRepository.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Repositories\\EnrollRepository.cs",
               "RelativeToolTip": "LMS\\Repositories\\EnrollRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-11T20:24:11.387Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\Index.cshtml",
               "RelativeDocumentMoniker": "LMS\\Views\\Module\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Module\\Index.cshtml",
               "RelativeToolTip": "LMS\\Views\\Module\\Index.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAEkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-11T20:09:06.365Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Courses\\Index.cshtml",
               "RelativeDocumentMoniker": "LMS\\Views\\Courses\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Courses\\Index.cshtml",
               "RelativeToolTip": "LMS\\Views\\Courses\\Index.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAADwvykAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAADwvywAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-11T17:29:12.132Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Courses\\Details.cshtml",
-              "RelativeDocumentMoniker": "LMS\\Views\\Courses\\Details.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\LMS\\LMS\\Views\\Courses\\Details.cshtml",
-              "RelativeToolTip": "LMS\\Views\\Courses\\Details.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAADwvyoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T17:25:43.648Z"
             }
           ]
         }
