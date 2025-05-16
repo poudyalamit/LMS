@@ -41,7 +41,7 @@ namespace LMS.Controllers
                 TeacherId = teacherId
             };
             await _enrollRepo.AddEnrollment(enrollment);
-            return RedirectToAction("Index", "Module", new { CourseId = courseId });
+            return RedirectToAction("Index", "Module", new { CourseId = courseId});
         }
 
         public async Task<IActionResult> DerollStudent(int Id)
@@ -50,7 +50,7 @@ namespace LMS.Controllers
             if (enrollment != null)
             {
                 await _enrollRepo.DeleteEnrollment(enrollment);
-                return Ok();
+                return RedirectToAction("Enroll", "Home");
             }
             return NotFound();
         }
