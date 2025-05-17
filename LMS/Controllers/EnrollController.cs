@@ -67,10 +67,10 @@ namespace LMS.Controllers
             return View(enrollments);
         }
 
-        public async Task<IActionResult> GetEnrollmentsByTeacherId(string teacherId)
+        public async Task<IActionResult> TeacherCourseEnrollment (string teacherId)
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByTeacherId(teacherId);
-            return Ok(enrollments);
+            return View(enrollments);
         }
         public async Task<IActionResult> StudentDashboard(string studentId)
         {
