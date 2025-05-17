@@ -1,5 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace LMS.Controllers
 {
@@ -70,11 +72,10 @@ namespace LMS.Controllers
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByTeacherId(teacherId);
             return Ok(enrollments);
         }
-
-        public async Task<IActionResult> GetEnrollmentsByStudentId(string studentId)
+        public async Task<IActionResult> StudentDashboard(string studentId)
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByStudentId(studentId);
-            return Ok(enrollments);
+            return View(enrollments);
         }
     }
 }

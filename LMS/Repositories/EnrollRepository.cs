@@ -60,10 +60,11 @@
                 .ToListAsync();
             return enrollments;
         }
-
+        [Authorize(Roles = "Student,Admin")]
         public async Task<IEnumerable<Enrollment>> GetEnrollmentByStudentId(string StudentId)
         {
             IEnumerable<Enrollment> enrollments = await _context.Enrollments
+                .Include(e => e.Course)
                 .Where(e => e.StudentId == StudentId)
                 .ToListAsync();
             return enrollments;
