@@ -17,7 +17,7 @@
     }
     else
     {
-        <a asp-controller="Enroll" asp-action="DerollStudent" class="btn btn-danger">
+        <a asp-controller="Enroll" asp-action="DerollStudent" asp-route-courseId="@ViewData["courseId"]" class="btn btn-danger">
             <i class="bi bi-box-arrow-left"></i> Deroll
         </a>
     }

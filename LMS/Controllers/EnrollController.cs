@@ -44,8 +44,12 @@ namespace LMS.Controllers
             return RedirectToAction("Index", "Module", new { CourseId = courseId});
         }
 
-        public async Task<IActionResult> DerollStudent(int Id)
+        public async Task<IActionResult> DerollStudent(int courseId)
         {
+            var Id = await _context.Enrollments
+                .Where(e => e.CourseId == courseId && e.StudentId == GetUser())
+                .Select(e => e.Id)
+                .FirstOrDefaultAsync();
             var enrollment = await _enrollRepo.GetEnrollmentById(Id);
             if (enrollment != null)
             {
