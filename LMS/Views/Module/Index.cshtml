@@ -5,7 +5,7 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3 px-4" style="margin-top: 6%">
-    <a href="/home/enroll" class="btn btn-warning">
+    <a asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@User?.Identity?.Name" class="btn btn-warning">
         ← Back to Courses
     </a>
     <h2 class="text-primary m-0">Modules Available</h2>

@@ -28,7 +28,7 @@
                         </li>
                         @if(User.IsInRole("Student")){
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@User?.Identity?.Name">My Dashboard</a>
+                                <a class="nav-link text-light font-weight-bold" asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@User?.Identity?.Name">My Dashboard</a>
                             </li>
                         }
                         <li class="nav-item">
