@@ -32,7 +32,7 @@ namespace LMS.Controllers
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetAllEnrollments();
             return enrollments;
         }
-
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> EnrollStudent(int courseId, string teacherId)
         {
             var studentId  =  GetUser();
@@ -45,7 +45,7 @@ namespace LMS.Controllers
             await _enrollRepo.AddEnrollment(enrollment);
             return RedirectToAction("Index", "Module", new { CourseId = courseId});
         }
-
+        [Authorize(Roles = "Student")]
         public async Task<IActionResult> DerollStudent(int courseId)
         {
             var Id = await _context.Enrollments
@@ -60,18 +60,19 @@ namespace LMS.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = "Teacher,Admin")]
         public async Task<IActionResult> CourseEnrollments(int courseId)
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentsByCourseId(courseId);
             return View(enrollments);
         }
-
+        [Authorize(Roles = "Teacher,Admin")]
         public async Task<IActionResult> TeacherCourseEnrollment (string teacherId)
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByTeacherId(teacherId);
             return View(enrollments);
         }
+        [Authorize(Roles = "Student,Admin")]
         public async Task<IActionResult> StudentDashboard(string studentId)
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByStudentId(studentId);

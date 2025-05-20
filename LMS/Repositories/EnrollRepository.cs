@@ -56,6 +56,7 @@
         public async Task<IEnumerable<Enrollment>> GetEnrollmentByTeacherId(string TeacherId)
         {
             IEnumerable<Enrollment> enrollments = await _context.Enrollments
+                .Include(e => e.Course)
                 .Where(e => e.TeacherId == TeacherId)
                 .ToListAsync();
             return enrollments;
