@@ -1,4 +1,6 @@
-﻿namespace LMS.Repositories
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace LMS.Repositories
 {
     public class EnrollRepository : IEnrollRepository
     {
@@ -11,7 +13,9 @@
         [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<Enrollment>> GetAllEnrollments()
         {
-            IEnumerable<Enrollment> enrollments = await _context.Enrollments.ToListAsync();
+            IEnumerable<Enrollment> enrollments = await _context.Enrollments
+                .Include(e => e.Course)
+                .ToListAsync();
             return enrollments;
         }
         [Authorize(Roles = "Teacher")]
@@ -69,7 +73,7 @@
                 .Where(e => e.StudentId == StudentId)
                 .ToListAsync();
             return enrollments;
-        }
+        } 
     }
 
     public interface IEnrollRepository

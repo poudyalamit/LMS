@@ -1,7 +1,10 @@
 using LMS.Models;
 using LMS.Models.DTO;
 using LMS.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
+using System.Collections;
 using System.Diagnostics;
 
 namespace LMS.Controllers
@@ -10,10 +13,12 @@ namespace LMS.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHomeRepository _homeRepository;
-        public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository)
+        private readonly UserManager<IdentityUser> _userManager;
+        public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _homeRepository = homeRepository;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -35,6 +40,12 @@ namespace LMS.Controllers
                 s = s
             };
             return View(displayCourse);
+        }
+
+        public async Task<IEnumerable<IdentityUser>> Info()
+        {
+            IEnumerable<IdentityUser> student = await _userManager.GetUsersInRoleAsync("Student");
+            return student;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

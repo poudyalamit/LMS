@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Enrollment>
+
+@{
+    ViewData["Title"] = "All Enrollments";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4 text-center" style="margin-top: 6%">All Enrollments</h2>
+
+    <table class="table table-bordered table-hover shadow-sm">
+        <thead class="table-warning">
+            <tr>
+                <th>Enrollment ID</th>
+                <th>Student ID</th>
+                <th>Course Code</th>
+                <th>Course Title</th>
+                <th>Teacher ID</th>
+                <th>Enrollment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var enrollment in Model)
+                {
+                    <tr>
+                        <td>@enrollment.Id</td>
+                        <td>@enrollment.StudentId</td>
+                        <td>@enrollment.Course?.Code</td>
+                        <td>@enrollment.Course?.Title</td>
+                        <td>@enrollment.TeacherId</td>
+                        <td>@enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No enrollments found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -26,11 +26,11 @@ namespace LMS.Controllers
             var user = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
             return user;
         }
-
-        public async Task<IEnumerable<Enrollment>> Index()
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Index()
         {
             IEnumerable<Enrollment> enrollments = await _enrollRepo.GetAllEnrollments();
-            return enrollments;
+            return View(enrollments);
         }
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> EnrollStudent(int courseId, string teacherId)
