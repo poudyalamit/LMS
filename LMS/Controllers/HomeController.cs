@@ -42,10 +42,18 @@ namespace LMS.Controllers
             return View(displayCourse);
         }
 
-        public async Task<IEnumerable<IdentityUser>> Info()
+        public async Task<IActionResult> StdInfo()
         {
             IEnumerable<IdentityUser> student = await _userManager.GetUsersInRoleAsync("Student");
-            return student;
+            ViewData["Role"] = "Student";
+            return View(student);
+        }
+
+        public async Task<IActionResult> TchrInfo()
+        {
+            IEnumerable<IdentityUser> teacher = await _userManager.GetUsersInRoleAsync("Teacher");
+            ViewData["Role"] = "Teacher";
+            return View("StdInfo", teacher);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

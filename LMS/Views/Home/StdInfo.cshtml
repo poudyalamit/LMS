@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    var role = ViewData["Role"]?.ToString();
+    ViewData["Title"] = role == "Student" ? "Student" : "Teacher";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4" style="margin-top: 6%">
+        <h2 class="text-primary">@ViewData["Title"]</h2>
+        <a href="/home/index" class="btn btn-warning">← Back</a>
+    </div>
+
+    <table class="table table-hover shadow-sm rounded bg-white text-center">
+        <thead class="table-warning text-center">
+            <tr>
+                <th class="text-center">User Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        @if (role == "Student")
+                        {
+                            <a asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@user.Email" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-journal-bookmark"></i> View Courses
+                            </a>
+                        }
+                        else if (role == "Teacher")
+                        {
+                            <a asp-controller="Enroll" asp-action="TeacherCourseEnrollment" asp-route-teacherId="@user.Email" class="btn btn-sm btn-outline-success">
+                                <i class="bi bi-people-fill"></i> View Enrollments
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
