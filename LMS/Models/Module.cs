@@ -17,6 +17,7 @@ namespace LMS.Models
         [MaxLength(100)]
         public string? ResourceUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public string? filePath { get; set; }
         [Required]
         public int TypeId { get; set; }
         public Types? Type { get; set; }

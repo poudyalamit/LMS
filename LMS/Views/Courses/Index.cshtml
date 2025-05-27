@@ -31,6 +31,9 @@
                 <a asp-controller="Enroll" asp-action="CourseEnrollments" asp-route-courseId="@course.Id" class="btn btn-warning btn-sm">
                     <i class="bi bi-people-fill"></i> See Enrollments
                 </a>
+                <a asp-controller="Module" asp-action="Index" asp-route-courseId="@course.Id" class="btn btn-warning btn-sm">
+                    <i class="bi bi-book"></i> See Modules
+                </a>
                 <div>
                     <a asp-action="Edit" asp-route-id="@course.Id" class="btn btn-warning btn-sm me-2">
                         <i class="bi bi-pencil-square"></i> Edit
