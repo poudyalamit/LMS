@@ -1,6 +1,7 @@
 ﻿using LMS.Data;
 using LMS.Models;
 using LMS.Repositories;
+using LMS.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,27 +44,8 @@ namespace LMS.Controllers
 
             if (moduleDTO.file != null)
             {
-                var extension = Path.GetExtension(moduleDTO.file.FileName);
-                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx" };
-                if (!allowedExtensions.Contains(extension.ToLower()))
-                    return BadRequest("File type not allowed.");
-
-                if (moduleDTO.file.Length > 5 * 1024 * 1024)
-                    return BadRequest("File size exceeds 5MB.");
-
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-                if (!Directory.Exists(uploadsFolder))
-                    Directory.CreateDirectory(uploadsFolder);
-
-                var fileName = Guid.NewGuid().ToString() + extension;
-                var filePath = Path.Combine(uploadsFolder, fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await moduleDTO.file.CopyToAsync(stream);
-                }
-
-                savedFilePath = Path.Combine("uploads", fileName);
+               Upload upload = new Upload();
+               savedFilePath = await upload.UploadFile(moduleDTO.file);
             }
             var module = new Module
             {
@@ -90,12 +72,35 @@ namespace LMS.Controllers
             {
                 return NotFound();
             }
-            return View(module);
+            var moduleDTO = new ModuleDTO
+            {
+                CourseId = module.CourseId,
+                Title = module.Title,
+                Description = module.Description,
+                ResourceUrl = module.ResourceUrl,
+                TypeId = module.TypeId,
+                FilePath = module.filePath
+            };
+            return View(moduleDTO);
         }
         [Authorize(Roles = "Teacher")]
         [HttpPost]
-        public async Task<IActionResult> EditModule(Module module)
+        public async Task<IActionResult> EditModule(int id, [FromForm] ModuleDTO moduleDTO)
         {
+            var module = await _moduleRepo.GetModuleById(id);
+            Upload upload = new Upload();
+            string savedFilePath = await upload.EditFile(moduleDTO.file);
+            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
+            if (module == null)
+            {
+                return NotFound();
+            }
+            module.Title = moduleDTO.Title;
+            module.Description = moduleDTO.Description;
+            module.ResourceUrl = moduleDTO.ResourceUrl;
+            module.TypeId = moduleDTO.TypeId;
+            module.filePath = savedFilePath;
+            
             if (ModelState.IsValid)
             {
                 await _moduleRepo.UpdateModule(module);

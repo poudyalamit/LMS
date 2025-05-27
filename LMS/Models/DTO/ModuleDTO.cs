@@ -12,5 +12,6 @@ namespace LMS.Models.DTO
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public IFormFile? file { get; set; }
         public int TypeId { get; set; }
+        public string? FilePath { get; set; }
     }
 }
