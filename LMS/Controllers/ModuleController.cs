@@ -136,19 +136,15 @@ namespace LMS.Controllers
         public async Task<IActionResult> DeleteModuleConfirmed(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);
-            var filepath = module.filePath;
-            if (!string.IsNullOrEmpty(filepath))
-            {
-                var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filepath);
-                if (System.IO.File.Exists(oldFullPath))
-                {
-                    System.IO.File.Delete(oldFullPath);
-                }
-            }
             if (module == null)
             {
                 return NotFound();
             }
+            if (!string.IsNullOrEmpty(module.filePath))
+            {
+                upload.DeleteFile(module.filePath);
+            }
+
             await _moduleRepo.DeleteModule(module);
             return RedirectToAction("Index", new { courseId = module.CourseId });
         }

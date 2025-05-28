@@ -10,13 +10,14 @@ using LMS.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using LMS.Utils;
 
 namespace LMS.Controllers
 {
 
     public class CoursesController : Controller
     {
-
+        Upload upload = new Upload();
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<IdentityUser> _userManager;
@@ -165,8 +166,8 @@ namespace LMS.Controllers
             return View(course);
         }
 
-        [Authorize(Roles = "Teacher")]
         // POST: Courses/Delete/5
+        [Authorize(Roles = "Teacher")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -175,6 +176,16 @@ namespace LMS.Controllers
             if (course != null)
             {
                 _context.Courses.Remove(course);
+                var modules = await _context.Modules.Where(m => m.CourseId == id).ToListAsync();
+                foreach (var module in modules)
+                {
+                    if (!string.IsNullOrEmpty(module.filePath))
+                    {
+                        upload.DeleteFile(module.filePath);
+                    }
+                }
+                _context.Modules.RemoveRange(modules);
+                await _context.SaveChangesAsync();
             }
 
             await _context.SaveChangesAsync();

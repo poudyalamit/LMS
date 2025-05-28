@@ -68,7 +68,17 @@ namespace LMS.Utils
             return Path.Combine("uploads", fileName);
         }
 
-
+        public void DeleteFile(string filepath)
+        {
+            if (!string.IsNullOrEmpty(filepath))
+            {
+                var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filepath);
+                if (System.IO.File.Exists(oldFullPath))
+                {
+                    System.IO.File.Delete(oldFullPath);
+                }
+            }
+        }
 
         private string BadRequest(string v)
         {
