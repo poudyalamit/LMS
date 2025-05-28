@@ -1,4 +1,5 @@
 ﻿using LMS.Data;
+using LMS.Data.Migrations;
 using LMS.Models;
 using LMS.Repositories;
 using LMS.Utils;
@@ -12,6 +13,7 @@ namespace LMS.Controllers
 {
     public class ModuleController : Controller
     {
+        Upload upload = new Upload();
         private readonly IModuleRepository _moduleRepo;
         private readonly ApplicationDbContext _context;
         public ModuleController(IModuleRepository moduleRepo, ApplicationDbContext context)
@@ -44,7 +46,6 @@ namespace LMS.Controllers
 
             if (moduleDTO.file != null)
             {
-               Upload upload = new Upload();
                savedFilePath = await upload.UploadFile(moduleDTO.file);
             }
             var module = new Module
@@ -88,19 +89,31 @@ namespace LMS.Controllers
         public async Task<IActionResult> EditModule(int id, [FromForm] ModuleDTO moduleDTO)
         {
             var module = await _moduleRepo.GetModuleById(id);
-            Upload upload = new Upload();
-            string savedFilePath = await upload.EditFile(moduleDTO.file);
-            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
             if (module == null)
             {
                 return NotFound();
             }
+
+            Upload upload = new Upload();
+            string? savedFilePath = null;
+
+            if (moduleDTO.file != null)
+            {
+                savedFilePath = await upload.EditFile(moduleDTO.file, module.filePath);
+            }
+            else
+            {
+                savedFilePath = module.filePath; 
+            }
+
+            ViewData["TypeId"] = new SelectList(_context.Types, "Id", "TypeName");
+
             module.Title = moduleDTO.Title;
             module.Description = moduleDTO.Description;
             module.ResourceUrl = moduleDTO.ResourceUrl;
             module.TypeId = moduleDTO.TypeId;
             module.filePath = savedFilePath;
-            
+
             if (ModelState.IsValid)
             {
                 await _moduleRepo.UpdateModule(module);
@@ -123,6 +136,15 @@ namespace LMS.Controllers
         public async Task<IActionResult> DeleteModuleConfirmed(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);
+            var filepath = module.filePath;
+            if (!string.IsNullOrEmpty(filepath))
+            {
+                var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filepath);
+                if (System.IO.File.Exists(oldFullPath))
+                {
+                    System.IO.File.Delete(oldFullPath);
+                }
+            }
             if (module == null)
             {
                 return NotFound();

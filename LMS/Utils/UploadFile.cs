@@ -56,7 +56,6 @@ namespace LMS.Utils
                 await file.CopyToAsync(stream);
             }
 
-            // Delete the old file if provided
             if (!string.IsNullOrEmpty(oldFilePath))
             {
                 var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldFilePath);
