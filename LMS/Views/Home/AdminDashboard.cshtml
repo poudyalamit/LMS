@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="text-center my-4">Admin Dashboard</h2>
+
+<div class="container d-flex justify-content-center gap-4 flex-wrap">
+    <div class="card shadow text-center" style="height: 250px; width: 250px;">
+        <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+                <h5 class="card-title">Teacher Actions</h5>
+                <p class="card-text">View and manage all registered teachers.</p>
+            </div>
+            <a asp-controller="Home" asp-action="TchrInfo" class="btn btn-warning mt-3">Go to Teachers</a>
+        </div>
+    </div>
+
+    <div class="card shadow text-center" style="height: 250px; width: 250px;">
+        <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+                <h5 class="card-title">Student Actions</h5>
+                <p class="card-text">View and manage all registered students.</p>
+            </div>
+            <a asp-controller="Home" asp-action="StdInfo" class="btn btn-warning mt-3">Go to Students</a>
+        </div>
+    </div>
+
+    <div class="card shadow text-center" style="height: 250px; width: 250px;">
+        <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+                <h5 class="card-title">Enrollments</h5>
+                <p class="card-text">View and manage course enrollments.</p>
+            </div>
+            <a asp-controller="Enroll" asp-action="Index" class="btn btn-warning mt-3">Enrollments</a>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,4 @@
-﻿using LMS.Data;
-using LMS.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-
+﻿
 namespace LMS.Repositories
 {
     [Authorize(Roles = "Teacher,Admin")]

@@ -25,6 +25,11 @@ namespace LMS.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult AdminDashboard()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -60,6 +60,18 @@ namespace LMS.Controllers
             }
             return NotFound();
         }
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteEnrollment(int Id)
+        {
+            var enrollment = await _enrollRepo.GetEnrollmentById(Id);
+            if (enrollment != null)
+            {
+                await _enrollRepo.DeleteEnrollment(enrollment);
+                return RedirectToAction("Index", "Enroll");
+            }
+            return NotFound();
+        }
+
         [Authorize(Roles = "Teacher,Admin")]
         public async Task<IActionResult> CourseEnrollments(int courseId)
         {

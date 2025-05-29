@@ -16,6 +16,7 @@
                 <th>Course Title</th>
                 <th>Teacher ID</th>
                 <th>Enrollment Date</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,15 +31,48 @@
                         <td>@enrollment.Course?.Title</td>
                         <td>@enrollment.TeacherId</td>
                         <td>@enrollment.EnrollmentDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <form id="delete-form-@enrollment.Id"
+                                  asp-action="DeleteEnrollment"
+                                  asp-route-Id="@enrollment.Id"
+                                  method="post"
+                                  style="display: inline;">
+                                <button type="button"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="confirmDelete(@enrollment.Id)"
+                                        data-bs-toggle="tooltip"
+                                        title="Delete">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 }
             }
             else
             {
                 <tr>
-                    <td colspan="6" class="text-center text-muted">No enrollments found.</td>
+                    <td colspan="7" class="text-center text-muted">No enrollments found.</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+
+    <script>
+        function confirmDelete(enrollmentId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`delete-form-${enrollmentId}`).submit();
+                }
+            });
+        }
+    </script>
