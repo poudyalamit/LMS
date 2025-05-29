@@ -9,16 +9,16 @@ A robust Learning Management System built with ASP.NET Core MVC, providing a cle
 - 📚 Module Management under each Course
 - 📝 Enrollment System for Students
 - 🔍 Search functionality by Course name or code
-- 🎯 Clean, responsive UI with Bootstrap 5
+- 🎯 Clean, responsive UI with Bootstrap 
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend**: ASP.NET Core MVC (.NET 6+)
+- **Backend**: ASP.NET Core MVC (.NET 8+)
 - **Authentication**: ASP.NET Core Identity
 - **Database**: SQL Server (via Entity Framework Core)
-- **Frontend**: Razor Views, Bootstrap 5
+- **Frontend**: Razor Views, Bootstrap 
 - **Others**: Dependency Injection, Role-based Authorization
 
 ---
@@ -28,5 +28,8 @@ A robust Learning Management System built with ASP.NET Core MVC, providing a cle
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/lms.git
+git clone https://github.com/poudyalamit/lms.git
 cd lms
+```
+
+### 2. Open Solution File
