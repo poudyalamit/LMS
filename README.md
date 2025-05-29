@@ -28,8 +28,11 @@ A robust Learning Management System built with ASP.NET Core MVC, providing a cle
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/poudyalamit/lms.git
-cd lms
+git clone https://github.com/poudyalamit/LMS.git
+cd LMS
 ```
 
 ### 2. Open Solution File
+```bash
+LMS.sln
+```
