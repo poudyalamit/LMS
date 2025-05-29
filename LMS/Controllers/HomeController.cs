@@ -41,14 +41,14 @@ namespace LMS.Controllers
             };
             return View(displayCourse);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> StdInfo()
         {
             IEnumerable<IdentityUser> student = await _userManager.GetUsersInRoleAsync("Student");
             ViewData["Role"] = "Student";
             return View(student);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> TchrInfo()
         {
             IEnumerable<IdentityUser> teacher = await _userManager.GetUsersInRoleAsync("Teacher");
