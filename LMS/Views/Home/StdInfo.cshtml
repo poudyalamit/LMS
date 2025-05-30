@@ -25,22 +25,63 @@
                 <tr>
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
-                    <td>
+                    <td class="d-flex justify-content-center gap-2 flex-wrap">
                         @if (role == "Student")
                         {
-                            <a asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@user.Email" class="btn btn-sm btn-outline-primary">
+                            <a asp-controller="Enroll"
+                               asp-action="StudentDashboard"
+                               asp-route-studentId="@user.Email"
+                               class="btn btn-sm btn-warning">
                                 <i class="bi bi-journal-bookmark"></i> View Courses
                             </a>
                         }
                         else if (role == "Teacher")
                         {
-                            <a asp-controller="Enroll" asp-action="TeacherCourseEnrollment" asp-route-teacherId="@user.Email" class="btn btn-sm btn-outline-success">
+                            <a asp-controller="Enroll"
+                               asp-action="TeacherCourseEnrollment"
+                               asp-route-teacherId="@user.Email"
+                               class="btn btn-sm btn-success">
                                 <i class="bi bi-people-fill"></i> View Enrollments
                             </a>
                         }
+                        <form id="delete-form-@user.Id"
+                              asp-action="DeleteUser"
+                              asp-route-id="@user.Id"
+                              method="post"
+                              style="display: inline;">
+                            <button type="button"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="confirmDelete('@user.Id')"
+                                    data-bs-toggle="tooltip"
+                                    title="Delete User">
+                                <i class="bi bi-trash3-fill"></i>
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(userId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This user will be permanently deleted.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`delete-form-${userId}`).submit();
+                }
+            });
+        }
+    </script>
+}

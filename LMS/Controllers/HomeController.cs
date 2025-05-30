@@ -60,7 +60,11 @@ namespace LMS.Controllers
             ViewData["Role"] = "Teacher";
             return View("StdInfo", teacher);
         }
+        //[Authorize(Roles = "Admin")]
+        //public async Task<> DeleteUser(string UserId)
+        //{
 
+        //}
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
