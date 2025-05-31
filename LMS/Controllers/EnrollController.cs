@@ -71,7 +71,6 @@ namespace LMS.Controllers
             }
             return NotFound();
         }
-
         [Authorize(Roles = "Teacher,Admin")]
         public async Task<IActionResult> CourseEnrollments(int courseId)
         {

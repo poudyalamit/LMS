@@ -1,10 +1,5 @@
-using LMS.Models;
-using LMS.Models.DTO;
-using LMS.Repositories;
+
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.General;
-using System.Collections;
 using System.Diagnostics;
 
 namespace LMS.Controllers
@@ -13,12 +8,14 @@ namespace LMS.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IHomeRepository _homeRepository;
+        private readonly IEnrollRepository _enrollRepo;
         private readonly UserManager<IdentityUser> _userManager;
-        public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository, UserManager<IdentityUser> userManager)
+        public HomeController(ILogger<HomeController> logger, IHomeRepository homeRepository, UserManager<IdentityUser> userManager, IEnrollRepository enrollRepo)
         {
             _logger = logger;
             _homeRepository = homeRepository;
             _userManager = userManager;
+            _enrollRepo = enrollRepo;
         }
 
         public IActionResult Index()
@@ -60,11 +57,38 @@ namespace LMS.Controllers
             ViewData["Role"] = "Teacher";
             return View("StdInfo", teacher);
         }
-        //[Authorize(Roles = "Admin")]
-        //public async Task<> DeleteUser(string UserId)
-        //{
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string UserEmail)
+        {
+            if (string.IsNullOrEmpty(UserEmail))
+            {
+                return BadRequest("User email cannot be null or empty.");
+            }
 
-        //}
+            var user = await _userManager.FindByEmailAsync(UserEmail);
+            if (user == null)
+            {
+                return NotFound($"User with email {UserEmail} not found.");
+            }
+
+            var isStudent = await _userManager.IsInRoleAsync(user, "Student");
+            if (isStudent)
+            {
+                IEnumerable<Enrollment> enrollments = await _enrollRepo.GetEnrollmentByStudentId(UserEmail);
+                foreach(var enrollment in enrollments)
+                {
+                    await _enrollRepo.DeleteEnrollment(enrollment);
+                }
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                return BadRequest("Failed to delete the user.");
+            }
+
+            return RedirectToAction("StdInfo");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

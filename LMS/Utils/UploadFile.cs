@@ -21,7 +21,7 @@ namespace LMS.Utils
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            var fileName = Guid.NewGuid().ToString() + extension;
+            var fileName = file.FileName.ToString() + extension;
             var filePath = Path.Combine(uploadsFolder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -48,7 +48,7 @@ namespace LMS.Utils
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            var fileName = Guid.NewGuid().ToString() + extension;
+            var fileName = file.FileName.ToString() + extension;
             var filePath = Path.Combine(uploadsFolder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))

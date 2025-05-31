@@ -45,8 +45,9 @@
                             </a>
                         }
                         <form id="delete-form-@user.Id"
+                              asp-controller="Home"
                               asp-action="DeleteUser"
-                              asp-route-id="@user.Id"
+                              asp-route-UserEmail="@user.Email"
                               method="post"
                               style="display: inline;">
                             <button type="button"
@@ -66,12 +67,11 @@
 </div>
 
 @section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function confirmDelete(userId) {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This user will be permanently deleted.",
+                text: "User will be permanently deleted.",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
