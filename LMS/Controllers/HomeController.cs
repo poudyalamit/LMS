@@ -89,6 +89,12 @@ namespace LMS.Controllers
 
             return RedirectToAction("StdInfo");
         }
+        [Authorize(Roles = "Teacher")]
+        public IActionResult TeacherDashboard()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -34,7 +34,7 @@
                         @if (User.IsInRole("Teacher"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-light font-weight-bold" asp-controller="Enroll" asp-action="TeacherCourseEnrollment" asp-route-teacherId="@User?.Identity?.Name">My Dashboard</a>
+                                <a class="nav-link text-light font-weight-bold" asp-controller="Home" asp-action="TeacherDashboard" asp-route-teacherId="@User?.Identity?.Name">My Dashboard</a>
                             </li>
                         }
                         @if (User.IsInRole("Admin"))
