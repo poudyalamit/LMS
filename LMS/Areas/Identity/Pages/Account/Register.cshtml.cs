@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -110,11 +111,21 @@ namespace LMS.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
+        public bool IsValidEducationDomain(string email)
+        {
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.(edu|ac)(\.[a-z]{2,})?$", RegexOptions.IgnoreCase);
+        }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            bool validEmail = IsValidEducationDomain(Input.Email);
+            if (!validEmail)
+            {
+                ModelState.AddModelError(string.Empty, "Please use a valid .edu email address.");
+                return Page();
+            }
             if (ModelState.IsValid)
             {
                 var user = CreateUser();

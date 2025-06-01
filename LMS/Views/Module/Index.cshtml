@@ -45,7 +45,7 @@ else{
                     <div class="card-body">
                         <h5 class="card-title">@module?.Title</h5>
                         <p class="card-text">@module?.Description</p>
-                        <a class="btn btn-warning fw-bold" style="color: black; position: absolute; right: 10px; bottom: 10px;">
+                        <a class="btn btn-warning fw-bold" asp-action="Detail" asp-route-Id="@module.Id" style="color: black; position: absolute; right: 10px; bottom: 10px;">
                             Details
                         </a>
                         @if (User.IsInRole("Teacher"))

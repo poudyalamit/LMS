@@ -1,0 +1,44 @@
+﻿@model Module
+@{
+    ViewData["Title"] = "Module Details";
+    string fileExtension = System.IO.Path.GetExtension(Model.filePath ?? "").ToLower();
+    string fileUrl = Url.Content($"~/{Model.filePath}");
+    string absoluteUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{fileUrl}";
+}
+
+<h2 class="mb-4">Module Details</h2>
+
+<div class="card shadow p-4">
+    <h4>@Model.Title</h4>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Resource URL:</strong> <a href="@Model.ResourceUrl" target="_blank">@Model.ResourceUrl</a></p>
+
+    @if (!string.IsNullOrEmpty(Model.filePath))
+    {
+        <hr />
+        <h5>Attached File:</h5>
+        <a href="@fileUrl" download class="btn btn-warning mt-2">Download File</a>
+
+        @if (fileExtension == ".pdf")
+        {
+            <iframe src="@fileUrl" width="100%" height="500px" style="border: 1px solid #ccc;"></iframe>
+        }
+        else if (fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png" || fileExtension == ".gif")
+        {
+            <img src="@fileUrl" alt="Attached File" style="max-width:100%; height:auto;" />
+        }
+        else if (fileExtension == ".docx" || fileExtension == ".pptx" || fileExtension == ".xlsx")
+        {
+            <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=@(Context.Request.Scheme + "://" + Context.Request.Host + fileUrl)" width="100%" height="600px" frameborder="0">
+            </iframe>
+        }
+        else
+        {
+            <a href="@fileUrl" download class="btn btn-outline-primary mt-2">Download File</a>
+        }
+    }
+    else
+    {
+        <p>No file attached.</p>
+    }
+</div>

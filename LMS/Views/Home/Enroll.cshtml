@@ -75,7 +75,9 @@
                     <h4 class="card-title text-warning">@course.Code : @course?.Title?.ToString()</h4>
                         <h5 class="card-text">@course?.Description?.ToString()</h5>
                         <h5 class="card-text">Offered By: @course?.TeacherId</h5>
-                    <a asp-controller="Enroll" asp-action="EnrollStudent" asp-route-courseId="@course?.Id" asp-route-TeacherId="@course?.TeacherId" class="btn enroll-btn px-4">Enroll Now</a>
+                        @if(User.IsInRole("Student")){
+                        <a asp-controller="Enroll" asp-action="EnrollStudent" asp-route-courseId="@course?.Id" asp-route-TeacherId="@course?.TeacherId" class="btn enroll-btn px-4">Enroll Now</a>
+                        }
                     </div>
                 </div>
             }

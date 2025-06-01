@@ -121,7 +121,16 @@ namespace LMS.Controllers
             }
             return View(module);
         }
-        [Authorize(Roles = "Teacher")]
+        public async Task<IActionResult> Detail(int Id)
+        {
+            var module = await _moduleRepo.GetModuleById(Id);
+            if (module == null)
+            {
+                return NotFound();
+            }
+            return View(module);
+        }
+        [Authorize(Roles = "Teacher,Admin")]
         public async Task<IActionResult> DeleteModule(int id)
         {
             var module = await _moduleRepo.GetModuleById(id);

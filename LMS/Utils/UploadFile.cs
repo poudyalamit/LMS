@@ -10,7 +10,7 @@ namespace LMS.Utils
         public async Task<string> UploadFile(IFormFile file)
         {
             var extension = Path.GetExtension(file.FileName);
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx" };
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx" };
             if (!allowedExtensions.Contains(extension.ToLower()))
                 return BadRequest( "File type not allowed.");
 
@@ -21,7 +21,7 @@ namespace LMS.Utils
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            var fileName = file.FileName.ToString() + extension;
+            var fileName = file.FileName;
             var filePath = Path.Combine(uploadsFolder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -37,7 +37,7 @@ namespace LMS.Utils
         public async Task<string> EditFile(IFormFile file, string? oldFilePath = null)
         {
             var extension = Path.GetExtension(file.FileName);
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx" };
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx" };
             if (!allowedExtensions.Contains(extension.ToLower()))
                 throw new Exception("File type not allowed.");
 
@@ -48,7 +48,7 @@ namespace LMS.Utils
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            var fileName = file.FileName.ToString() + extension;
+            var fileName = file.FileName;
             var filePath = Path.Combine(uploadsFolder, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
