@@ -157,5 +157,20 @@ namespace LMS.Controllers
             await _moduleRepo.DeleteModule(module);
             return RedirectToAction("Index", new { courseId = module.CourseId });
         }
+        public Task<IActionResult> Dwonload(string Filepath)
+        {
+            if (string.IsNullOrEmpty(Filepath))
+            {
+                return Task.FromResult<IActionResult>(BadRequest("Filepath cannot be null or empty."));
+            }
+
+            var fileContent = upload.DownloadFile(Filepath, Request);
+            if (fileContent == null)
+            {
+                return Task.FromResult<IActionResult>(NotFound("File not found."));
+            }
+
+            return Task.FromResult<IActionResult>(File(fileContent, "application/octet-stream", Path.GetFileName(Filepath)));
+        }
     }
 }

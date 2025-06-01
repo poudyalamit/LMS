@@ -1,7 +1,9 @@
-﻿using LMS.Data.Migrations;
+﻿using Azure.Core;
+using LMS.Data.Migrations;
 using LMS.Models.DTO;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace LMS.Utils
 {
@@ -10,7 +12,7 @@ namespace LMS.Utils
         public async Task<string> UploadFile(IFormFile file)
         {
             var extension = Path.GetExtension(file.FileName);
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx" };
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx", ".zip" };
             if (!allowedExtensions.Contains(extension.ToLower()))
                 return BadRequest( "File type not allowed.");
 
@@ -37,7 +39,7 @@ namespace LMS.Utils
         public async Task<string> EditFile(IFormFile file, string? oldFilePath = null)
         {
             var extension = Path.GetExtension(file.FileName);
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx" };
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".pdf", ".docx", ".pptx", ".csv", ".xlsx", ".zip" };
             if (!allowedExtensions.Contains(extension.ToLower()))
                 throw new Exception("File type not allowed.");
 
@@ -68,16 +70,25 @@ namespace LMS.Utils
             return Path.Combine("uploads", fileName);
         }
 
-        public void DeleteFile(string filepath)
+        public void DeleteFile(string filePath)
         {
-            if (!string.IsNullOrEmpty(filepath))
+            if (!string.IsNullOrEmpty(filePath))
             {
-                var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filepath);
+                var oldFullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filePath);
                 if (System.IO.File.Exists(oldFullPath))
                 {
                     System.IO.File.Delete(oldFullPath);
                 }
             }
+        }
+
+        public string DownloadFile (string filePath, HttpRequest request)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentException("File path cannot be null or empty.", nameof(filePath));
+
+            string downloadUrl = $"{request.Scheme}://{request.Host}/{filePath.Replace("\\", "/")}";
+            return downloadUrl;
         }
 
         private string BadRequest(string v)
