@@ -1,0 +1,19 @@
+﻿services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=AppDb;User=sa;Password=sqlserver@123;
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "sqlserver@123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
