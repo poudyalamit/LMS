@@ -8,10 +8,13 @@ using LMS.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString, sqlOptions =>
+        sqlOptions.EnableRetryOnFailure()
+    )
+); 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -39,6 +42,8 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.ApplyMigration();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -46,6 +51,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())
@@ -64,9 +70,9 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
-    string adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASS");
-    string adminUsername = Environment.GetEnvironmentVariable("ADMIN_USER");
+    string adminEmail = "admin@gmail.com";
+    string adminPassword = "Admin@123";
+    string adminUsername = "admin@gmail.com";
 
     var admin = await userManager.FindByEmailAsync(adminEmail);
     if (admin == null)
