@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 using LMS.Models;
 using LMS.Repositories;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+using LMS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +25,26 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy<string>("default", HttpContext =>
+        {
+            return RateLimitPartition.GetFixedWindowLimiter(
+                partitionKey: HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+                factory: _ => new FixedWindowRateLimiterOptions
+                {
+                    Window = TimeSpan.FromSeconds(10),
+                    PermitLimit = 10,
+                    QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                    QueueLimit = 0
+                });
+        });
+});
 builder.Services.AddTransient<IHomeRepository, HomeRepository>(); 
 builder.Services.AddTransient<IModuleRepository, ModuleRepository>(); 
 builder.Services.AddTransient<IEnrollRepository, EnrollRepository>();
+builder.Services.AddTransient<IEmailService,EmailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,7 +55,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
     app.UseHsts();
 }
 
@@ -45,6 +65,8 @@ app.UseStaticFiles();
 app.ApplyMigration();
 
 app.UseRouting();
+
+app.UseRateLimiter();
 
 app.UseAuthorization();
 
@@ -70,9 +92,9 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    string adminEmail = "admin@gmail.com";
-    string adminPassword = "Admin@123";
-    string adminUsername = "admin@gmail.com";
+    string adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL"); 
+    string adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASS");
+    string adminUsername = Environment.GetEnvironmentVariable("ADMIN_USER");
 
     var admin = await userManager.FindByEmailAsync(adminEmail);
     if (admin == null)

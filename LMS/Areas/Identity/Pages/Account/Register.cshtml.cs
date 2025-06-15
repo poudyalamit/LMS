@@ -120,7 +120,9 @@ namespace LMS.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            bool validEmail = IsValidEducationDomain(Input.Email);
+            bool validEmail = true;
+            //validEmail= IsValidEducationDomain(Input.Email);
+
             if (!validEmail)
             {
                 ModelState.AddModelError(string.Empty, "Please use a valid .edu email address.");
