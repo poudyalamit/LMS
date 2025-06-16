@@ -77,7 +77,8 @@ namespace LMS.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailService.SendConfirmationEmailAsync(email, EmailConfirmationUrl);
-            return Page();
+                    TempData["Message"] = "A confirmation email has been sent. You will be redirected shortly.";
+                return Page();
             }
             else
             {
