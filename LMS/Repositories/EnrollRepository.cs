@@ -36,6 +36,14 @@ namespace LMS.Repositories
             }
         }
 
+        public async Task GetStudentCourse(string StdId)
+        {
+            await _context.Enrollments
+                .Where(e => e.StudentId == StdId)
+                .Select(e => e.CourseId)
+                .ToListAsync();
+        }
+
         // This method is not used in the current implementation and this is not need to be used but maybe used in the future
         public async Task UpdateEnrollment(Enrollment enrollment)
         {

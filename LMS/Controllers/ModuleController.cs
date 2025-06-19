@@ -6,20 +6,25 @@ using LMS.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using Microsoft.EntityFrameworkCore;
+using LMS.Services;
 
 namespace LMS.Controllers
 {
     public class ModuleController : Controller
     {
-        Upload upload = new Upload();
+        private Upload _upload;
         private readonly IModuleRepository _moduleRepo;
         private readonly ApplicationDbContext _context;
-        public ModuleController(IModuleRepository moduleRepo, ApplicationDbContext context)
+        private readonly IHubContext<NotiHub> _hubContext;
+        public ModuleController(IModuleRepository moduleRepo, ApplicationDbContext context, IHubContext<NotiHub> hubContext)
         {
             _moduleRepo = moduleRepo;
             _context = context;
+            _hubContext = hubContext;
+            _upload = new Upload();
         }
         [Authorize(Roles = "Student,Teacher")]
         public async Task<IActionResult> Index(int courseId)
@@ -46,7 +51,7 @@ namespace LMS.Controllers
 
             if (moduleDTO.file != null)
             {
-               savedFilePath = await upload.UploadFile(moduleDTO.file);
+               savedFilePath = await _upload.UploadFile(moduleDTO.file);
             }
             var module = new Module
             {
@@ -62,6 +67,7 @@ namespace LMS.Controllers
                 await _moduleRepo.AddModule(module);
                 return RedirectToAction("Index", new { courseId = module.CourseId });
             }
+            await _hubContext.Clients.Group($"course-{module.CourseId}").SendAsync("ReceiveNotification", $"New {module.Title} added to the course.");
             return View(module);
         }
         [Authorize(Roles = "Teacher")]
@@ -151,7 +157,7 @@ namespace LMS.Controllers
             }
             if (!string.IsNullOrEmpty(module.filePath))
             {
-                upload.DeleteFile(module.filePath);
+                _upload.DeleteFile(module.filePath);
             }
 
             await _moduleRepo.DeleteModule(module);
@@ -164,7 +170,7 @@ namespace LMS.Controllers
                 return Task.FromResult<IActionResult>(BadRequest("Filepath cannot be null or empty."));
             }
 
-            var fileContent = upload.DownloadFile(Filepath, Request);
+            var fileContent = _upload.DownloadFile(Filepath, Request);
             if (fileContent == null)
             {
                 return Task.FromResult<IActionResult>(NotFound("File not found."));

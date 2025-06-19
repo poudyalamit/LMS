@@ -4,23 +4,22 @@
     ViewData["Title"] = "Modules";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3 px-4" style="margin-top: 6%">
+<div id="notification-box" class="alert alert-info d-none text-center mx-auto mt-3" style="width: 60%;">
+    <strong id="notification-message"></strong>
+</div>
 
+<div class="d-flex justify-content-between align-items-center mb-3 px-4" style="margin-top: 6%">
     @if (User.IsInRole("Teacher"))
     {
-        <a asp-controller="Courses" asp-action="Index"  class="btn btn-warning">
-            ← Back to Courses
-        </a>
+        <a asp-controller="Courses" asp-action="Index" class="btn btn-warning">← Back to Courses</a>
         <h2 class="text-primary m-0">Modules Available</h2>
         <a asp-controller="Module" asp-action="AddModule" asp-route-courseId="@ViewData["courseId"]" class="btn btn-warning">
             <i class="bi bi-plus-lg"></i> Add Module
         </a>
     }
-    else if(User.IsInRole("Student"))
+    else if (User.IsInRole("Student"))
     {
-        <a asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@User?.Identity?.Name" class="btn btn-warning">
-            ← Back to Courses
-        </a>
+        <a asp-controller="Enroll" asp-action="StudentDashboard" asp-route-studentId="@User?.Identity?.Name" class="btn btn-warning">← Back to Courses</a>
         <h2 class="text-primary m-0">Modules Available</h2>
         <a asp-controller="Enroll" asp-action="DerollStudent" asp-route-courseId="@ViewData["courseId"]" class="btn btn-danger">
             <i class="bi bi-box-arrow-left"></i> Deroll
@@ -34,20 +33,23 @@
         No modules available at the moment.
     </div>
 }
-else{
-<div class="d-flex flex-column gap-4">
+else
+{
+    <div class="d-flex flex-column gap-4">
         @foreach (var module in Model)
         {
-            @* Icons must be added later to show the type of modules *@
+
             <div class="card mx-auto shadow-lg border-0" style="max-width: 850px;">
                 <div class="card">
                     <img src="images/@(module?.Type?.TypeName).jpg" class="card-img-top" style="height: 200px; width:800px; object-fit: cover;" alt="@module?.Type?.TypeName">
                     <div class="card-body">
                         <h5 class="card-title">@module?.Title</h5>
                         <p class="card-text">@module?.Description</p>
+
                         <a class="btn btn-warning fw-bold" asp-action="Detail" asp-route-Id="@module.Id" style="color: black; position: absolute; right: 10px; bottom: 10px;">
                             Details
                         </a>
+
                         @if (User.IsInRole("Teacher"))
                         {
                             <div class="d-flex justify-content-end gap-2" style="position: absolute; right: 10px; top: 10px;">
@@ -55,20 +57,21 @@ else{
                                     <i class="bi bi-pencil-fill"></i>
                                 </a>
                                 <form id="delete-form-@module.Id"
-                                asp-action="DeleteModule"
-                                asp-route-id="@module.Id"
-                                method="post"
-                                style="display: inline;">
+                                      asp-action="DeleteModule"
+                                      asp-route-id="@module.Id"
+                                      method="post"
+                                      style="display: inline;">
                                     <button type="button"
-                                    class="btn btn-danger btn-sm"
-                                    onclick="confirmDelete(@module.Id)"
-                                    data-bs-toggle="tooltip"
-                                    title="Delete">
+                                            class="btn btn-danger btn-sm"
+                                            onclick="confirmDelete(@module.Id)"
+                                            data-bs-toggle="tooltip"
+                                            title="Delete">
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 </form>
                             </div>
                         }
+
                         <p class="card-text mt-3">
                             <small class="text-muted">
                                 Posted on: @{
@@ -86,7 +89,7 @@ else{
             </div>
         }
     </div>
-    }
+}
 
 <script>
     function confirmDelete(moduleId) {
@@ -106,3 +109,27 @@ else{
     }
 </script>
 
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/notihub")
+            .build();
+
+        connection.on("ReceiveNotification", function (@User?.Identity?.Name,message) {
+            const box = document.getElementById("notification-box");
+            const text = document.getElementById("notification-message");
+
+            text.textContent = message;
+            box.classList.remove("d-none");
+
+            setTimeout(() => {
+                box.classList.add("d-none");
+            }, 10000);
+        });
+
+        connection.start().catch(function (err) {
+            console.error("SignalR connection error: ", err.toString());
+        });
+    </script>
+}
