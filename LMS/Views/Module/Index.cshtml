@@ -109,9 +109,9 @@ else
     }
 </script>
 
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script src="/js/signalr/dist/browser/signalr.js"></script>
     <script>
+    "use strict";
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/notihub")
             .build();
@@ -132,4 +132,4 @@ else
             console.error("SignalR connection error: ", err.toString());
         });
     </script>
-}
+

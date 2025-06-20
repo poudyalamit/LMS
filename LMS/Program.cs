@@ -46,6 +46,7 @@ builder.Services.AddTransient<IHomeRepository, HomeRepository>();
 builder.Services.AddTransient<IModuleRepository, ModuleRepository>(); 
 builder.Services.AddTransient<IEnrollRepository, EnrollRepository>();
 builder.Services.AddTransient<IEmailService,EmailService>();
+builder.Services.AddTransient<INotificationService, NotiService>();
 
 //expire time for email tokens
 builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>

@@ -1,4 +1,6 @@
-﻿public class NotiService : INotificationService
+﻿using System.Collections;
+
+public class NotiService : INotificationService
 {
     private readonly ApplicationDbContext _context;
 
@@ -7,7 +9,7 @@
         _context = context;
     }
 
-    public async Task<List<int>> GetStudentCourseIdsAsync(string studentId)
+    public async Task<IEnumerable> GetStudentCourseIdsAsync(string studentId)
     {
         return await _context.Enrollments
             .Where(e => e.StudentId == studentId)
@@ -18,5 +20,5 @@
 
 public interface INotificationService
 {
-    Task<List<int>> GetStudentCourseIdsAsync(string studentId);
+    Task<IEnumerable> GetStudentCourseIdsAsync(string studentId);
 }
