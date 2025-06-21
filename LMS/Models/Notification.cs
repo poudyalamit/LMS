@@ -13,7 +13,7 @@ namespace LMS.Models
         public required string Message { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsRead { get; set; }
-        public string? UserId { get; set; }
+        public required string UserId { get; set; }
         public IdentityUser? User { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace LMS.Services
 
         public async Task SendNotiToGroup(string groupName, string message)
         {
-            await Clients.Group(groupName).SendAsync("ReceiveNotification", $"{Context?.User?.Identity?.Name}: {message}");
+            await Clients.Group(groupName).SendAsync("ReceiveNotification", message);
         }
 
         public override async Task OnConnectedAsync()

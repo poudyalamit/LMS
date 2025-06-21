@@ -20,10 +20,10 @@ namespace LMS.Models
         public string? filePath { get; set; }
         [Required]
         public int TypeId { get; set; }
-        public Types? Type { get; set; }
+        public Types ?Type { get; set; }
         public Course? Course { get; set; }
 
         [NotMapped]
-        public string ?TypeName{ get; set; }
-    }
+        public string ?TypeName { get; set; }
+    } 
 }

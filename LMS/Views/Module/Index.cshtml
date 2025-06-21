@@ -89,6 +89,7 @@ else
             </div>
         }
     </div>
+
 }
 
 <script>
@@ -109,27 +110,5 @@ else
     }
 </script>
 
-<script src="/js/signalr/dist/browser/signalr.js"></script>
-    <script>
-    "use strict";
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/notihub")
-            .build();
 
-        connection.on("ReceiveNotification", function (@User?.Identity?.Name,message) {
-            const box = document.getElementById("notification-box");
-            const text = document.getElementById("notification-message");
-
-            text.textContent = message;
-            box.classList.remove("d-none");
-
-            setTimeout(() => {
-                box.classList.add("d-none");
-            }, 10000);
-        });
-
-        connection.start().catch(function (err) {
-            console.error("SignalR connection error: ", err.toString());
-        });
-    </script>
 

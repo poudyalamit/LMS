@@ -14,5 +14,6 @@ namespace LMS.Data
         public DbSet<Module> Modules { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Types> Types { get; set; } = default!;
+        public DbSet<Notification> Notification { get; set; }
     }
 }
