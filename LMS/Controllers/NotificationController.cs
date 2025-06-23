@@ -1,0 +1,106 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
+namespace LMS.Controllers
+{
+    public class NotificationController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager; 
+        public NotificationController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var userId = _userManager.GetUserId(User);
+            if (userId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var notifications = await _context.Notification
+                .Where(n => n.UserId == userId)
+                .OrderByDescending(n => n.CreatedAt)
+                .ToListAsync();
+            if(notifications == null) 
+            {
+                ViewBag.NotificationCount = 0; 
+            }
+            else
+            {
+                ViewBag.NotificationCount = notifications?.Count(n => !n.IsRead);
+            }
+            return View(notifications);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(int id)
+        {
+            var notification = await _context.Notification.FindAsync(id);
+            if (notification != null)
+            {
+                notification.IsRead = true;
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var notification = await _context.Notification.FindAsync(id);
+            if (notification != null)
+            {
+                _context.Notification.Remove(notification);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAll()
+        {
+            var userId = _userManager.GetUserId(User);
+            if (userId != null)
+            {
+                var notifications = await _context.Notification.Where(n => n.UserId == userId).ToListAsync();
+                _context.Notification.RemoveRange(notifications);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(string userId, string message)
+        {
+            if (userId != null && message != null)
+            {
+                var notification = new Notification
+                {
+                    UserId = userId,
+                    Message = message,
+                    IsRead = false,
+                    CreatedAt = DateTime.Now
+                };
+                _context.Notification.Add(notification);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<int> GetUnreadCount()
+        {
+            var userId = User.Identity?.Name;
+            if (userId == null)
+            { 
+                return 0;
+            }
+            int unreadCount = await _context.Notification
+                .CountAsync(n => n.UserId == userId && !n.IsRead);
+            return unreadCount;
+        }
+    }
+}

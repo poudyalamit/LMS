@@ -58,6 +58,20 @@
         </main>
     </div>
 
+    @* notification toast *@
+    <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1080; margin-top: 7%;">
+        <div id="liveToast" class="toast bg-warning text-dark border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true" style="font-weight: 500; font-size: 1.2rem;">
+            <div class="d-flex align-items-center">
+                <div class="toast-body" id="toast-message" style="font-weight: 500;">
+                    ⚠️ Notification
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" style="filter: brightness(0) saturate(100%) invert(13%) sepia(85%) saturate(5723%) hue-rotate(2deg) brightness(98%) contrast(111%); width: 1.5rem; height: 1.5rem;"></button>
+            </div>
+        </div>
+    </div>
+
+
+
     <footer class="custom-footer py-3">
         <div class="container text-center">
             <span class="fw-bold text-dark">

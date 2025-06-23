@@ -8,12 +8,26 @@
         var user = await UserManager.GetUserAsync(User);
         var role = await UserManager.GetRolesAsync(user);
         <li class="nav-item">
-        <a  class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-        <li class="nav-item">
-            <span class="nav-link text-light"> @string.Join(", ", role)</span>
+            <a asp-controller="Notification" asp-action="Index" class="btn btn-primary position-relative">
+                <i class="bi bi-bell-fill fs-4"></i>
+                <span class="position-absolute badge rounded-pill bg-danger text-white"
+                      style="top: 2px; right: 2px; font-size: 0.7rem; z-index: 10;">
+                    @ViewBag.NotificationCount
+                </span>
+                <span class="visually-hidden">unread messages</span>
+            </a>
         </li>
-    <li class="nav-item">
+
+        <li class="nav-item text-center" style="margin-top: -3px">
+            <a class="nav-link text-light d-flex flex-column align-items-center"
+               asp-area="Identity"
+               asp-page="/Account/Manage/Index"
+               title="Manage Profile"
+               style="line-height: 1.2;">
+                <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
+            </a>
+        </li>
+    <li class="nav-item me-5">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button  type="submit" class="nav-link btn btn-link text-light">Logout</button>
         </form>
@@ -24,7 +38,7 @@ else
     <li class="nav-item">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item me-5">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
