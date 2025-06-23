@@ -10,9 +10,9 @@
         <li class="nav-item">
             <a asp-controller="Notification" asp-action="Index" class="btn btn-primary position-relative">
                 <i class="bi bi-bell-fill fs-4"></i>
-                <span class="position-absolute badge rounded-pill bg-danger text-white"
+                <span id="count" class="position-absolute badge rounded-pill bg-danger text-white"
                       style="top: 2px; right: 2px; font-size: 0.7rem; z-index: 10;">
-                    @ViewBag.NotificationCount
+                    
                 </span>
                 <span class="visually-hidden">unread messages</span>
             </a>
@@ -43,3 +43,15 @@ else
     </li>
 }
 </ul>
+<script>
+    async function GetUnreadCount() {
+        var response = await fetch('/Notification/GetUnreadCount');
+        console.log(response);
+        if(response.ok){
+            var count = await response.json();
+            console.log(count);
+            document.getElementById("count").innerHTML = count;
+        }
+    }
+    GetUnreadCount();
+</script>

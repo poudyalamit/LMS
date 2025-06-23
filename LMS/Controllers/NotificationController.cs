@@ -93,7 +93,7 @@ namespace LMS.Controllers
 
         public async Task<int> GetUnreadCount()
         {
-            var userId = User.Identity?.Name;
+            var userId = _userManager.GetUserId(User);
             if (userId == null)
             { 
                 return 0;
