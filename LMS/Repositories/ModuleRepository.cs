@@ -1,13 +1,28 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Elfie.Model.Strings;
+
 namespace LMS.Repositories
 {
     [Authorize(Roles = "Teacher,Admin")]
     public class ModuleRepository : IModuleRepository
     {
         private readonly ApplicationDbContext _context;
-        public ModuleRepository(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public ModuleRepository(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+        }
+        private async Task<string?> GetUserIdByEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                return user.Id;
+            }
+
+            return null;
         }
 
         public async Task AddModule (Module module)
@@ -43,6 +58,34 @@ namespace LMS.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public async Task StoreNotification(string groupName, string message)
+        {
+            if (!groupName.StartsWith("course-")) return;
+
+            var courseIdStr = groupName.Replace("course-", "");
+            if (!int.TryParse(courseIdStr, out int courseId)) return;
+
+            var userIds = await _context.Enrollments
+                              .Where(e => e.CourseId == courseId)
+                              .Select(e => e.StudentId)
+                              .Distinct()
+                              .ToListAsync();
+
+            foreach (var userId in userIds)
+            {
+                var userIdByEmail = await GetUserIdByEmail(userId); 
+                if (userIdByEmail == null) continue; 
+
+                _context.Notification.Add(new Notification
+                {
+                    UserId = userIdByEmail,
+                    Message = message,
+                    CreatedAt = DateTime.UtcNow
+                });
+            }
+            await _context.SaveChangesAsync();
+        }
     }
 
     public interface IModuleRepository
@@ -52,5 +95,6 @@ namespace LMS.Repositories
         Task<Module?> GetModuleById(int id);
         Task UpdateModule(Module module);
         Task DeleteModule(Module module);
+        Task StoreNotification(string groupName, string message);
     }
 }

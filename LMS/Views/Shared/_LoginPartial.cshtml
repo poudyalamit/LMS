@@ -43,15 +43,27 @@ else
     </li>
 }
 </ul>
-<script>
-    async function GetUnreadCount() {
-        var response = await fetch('/Notification/GetUnreadCount');
-        console.log(response);
-        if(response.ok){
-            var count = await response.json();
-            console.log(count);
-            document.getElementById("count").innerHTML = count;
+
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        async function GetUnreadCount() {
+            try {
+                const response = await fetch('/Notification/GetUnreadCount');
+                if (response.ok) {
+                    const count = await response.json();
+                    const countElement = document.getElementById("count");
+                    if (countElement) {
+                        countElement.innerHTML = count;
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch unread count:', err);
+            }
         }
-    }
-    GetUnreadCount();
-</script>
+
+        GetUnreadCount();
+    </script>
+}
+
+

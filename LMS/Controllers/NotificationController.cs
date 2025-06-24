@@ -91,6 +91,7 @@ namespace LMS.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Teacher,Student")]
         public async Task<int> GetUnreadCount()
         {
             var userId = _userManager.GetUserId(User);

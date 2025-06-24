@@ -65,7 +65,10 @@ namespace LMS.Controllers
             if (ModelState.IsValid)
             {
                 await _moduleRepo.AddModule(module);
-                await _hubContext.Clients.Group($"course-{module.CourseId}").SendAsync("ReceiveNotification", $"New {module?.Type?.TypeName?.ToString()} added  to the course {module?.Course?.Title}.");
+                string groupName = $"course-{module.CourseId}";
+                string message = $"New {module?.Type?.TypeName?.ToString()} added  to the course {module?.Course?.Title}.";
+                await _hubContext.Clients.Group(groupName).SendAsync("ReceiveNotification", message);
+                await _moduleRepo.StoreNotification(groupName, message);
                 return RedirectToAction("Index", new { courseId = module?.CourseId });
             }
             return View(module);
@@ -159,9 +162,11 @@ namespace LMS.Controllers
             {
                 _upload.DeleteFile(module.filePath);
             }
-
+            string groupName = $"course-{module.CourseId}";
+            string message = $"'{module?.Title?.ToUpper()}' module deleted from the course {module?.Course?.Title?.ToUpper()}.";
+            await _moduleRepo.StoreNotification(groupName, message);
+            await _hubContext.Clients.Group(groupName).SendAsync("ReceiveNotification", message);
             await _moduleRepo.DeleteModule(module);
-            await _hubContext.Clients.Group($"course-{module.CourseId}").SendAsync("ReceiveNotification", $"'{module?.Title?.ToUpper()}' module deleted from the course {module?.Course?.Title?.ToUpper()}.");
             return RedirectToAction("Index", new { courseId = module.CourseId });
         }
         public Task<IActionResult> Download(string Filepath)

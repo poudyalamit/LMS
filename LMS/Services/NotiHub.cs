@@ -5,11 +5,13 @@ namespace LMS.Services
     [Authorize]
     public class NotiHub : Hub
     {
+        private readonly ApplicationDbContext _context;
         private readonly INotificationService _notification;
 
-        public NotiHub(INotificationService notification)
+        public NotiHub(INotificationService notification, ApplicationDbContext context)
         {
             _notification = notification;
+            _context = context;
         }
         public async Task SendMessage(string user, string message)
         {
