@@ -59,7 +59,7 @@ namespace LMS.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task StoreNotification(string groupName, string message)
+        public async Task StoreNotificationByCourse(string groupName, string message)
         {
             if (!groupName.StartsWith("course-")) return;
 
@@ -75,14 +75,14 @@ namespace LMS.Repositories
             foreach (var userId in userIds)
             {
                 var userIdByEmail = await GetUserIdByEmail(userId); 
-                if (userIdByEmail == null) continue; 
-
-                _context.Notification.Add(new Notification
+                if (userIdByEmail == null) continue;
+                var notification = new Notification
                 {
                     UserId = userIdByEmail,
                     Message = message,
                     CreatedAt = DateTime.UtcNow
-                });
+                };
+                _context.Notification.Add(notification);
             }
             await _context.SaveChangesAsync();
         }
@@ -95,6 +95,6 @@ namespace LMS.Repositories
         Task<Module?> GetModuleById(int id);
         Task UpdateModule(Module module);
         Task DeleteModule(Module module);
-        Task StoreNotification(string groupName, string message);
+        Task StoreNotificationByCourse(string groupName, string message);
     }
 }

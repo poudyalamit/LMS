@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LMS.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
 namespace LMS.Controllers
@@ -7,11 +9,15 @@ namespace LMS.Controllers
     public class NotificationController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager; 
-        public NotificationController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IHubContext<NotiHub> _hubContext;
+        private readonly INotificationRepository _notiRepo;
+        public NotificationController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IHubContext<NotiHub> hubContext, INotificationRepository notiRepo)
         {
             _context = context;
             _userManager = userManager;
+            _hubContext = hubContext;
+            _notiRepo = notiRepo;
         }
         public async Task<IActionResult> Index()
         {
@@ -102,6 +108,25 @@ namespace LMS.Controllers
             int unreadCount = await _context.Notification
                 .CountAsync(n => n.UserId == userId && !n.IsRead);
             return unreadCount;
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Announce(string groupName, string message)
+        {
+            if (string.IsNullOrEmpty(groupName) || string.IsNullOrEmpty(message))
+            {
+                return BadRequest("Group name and message cannot be empty.");
+            }
+            if( groupName == "Teachers" || groupName == "Students")
+            {
+                await _notiRepo.SendNotification(groupName,message);
+            }
+            else
+            {
+                await _notiRepo.SendNotificationAllUsers(message);
+            }
+
+            return View();
         }
     }
 }

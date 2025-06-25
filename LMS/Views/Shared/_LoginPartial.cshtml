@@ -3,12 +3,15 @@
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
+    @if (SignInManager.IsSignedIn(User))
+    {
         var user = await UserManager.GetUserAsync(User);
         var role = await UserManager.GetRolesAsync(user);
-        <li class="nav-item">
-            <a asp-controller="Notification" asp-action="Index" class="btn btn-primary position-relative">
+
+        if (!User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a asp-controller="Notification" asp-action="Index" class="btn btn-primary position-relative">
                 <i class="bi bi-bell-fill fs-4"></i>
                 <span id="count" class="position-absolute badge rounded-pill bg-danger text-white"
                       style="top: 2px; right: 2px; font-size: 0.7rem; z-index: 10;">
@@ -17,6 +20,7 @@
                 <span class="visually-hidden">unread messages</span>
             </a>
         </li>
+        }
 
         <li class="nav-item text-center" style="margin-top: -3px">
             <a class="nav-link text-light d-flex flex-column align-items-center"

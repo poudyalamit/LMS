@@ -34,6 +34,7 @@ namespace LMS.Services
                 }
                 else if (Context.User.IsInRole("Student"))
                 {
+                    await Groups.AddToGroupAsync(Context.ConnectionId, "Students");
                     var userId = Context?.User?.Identity?.Name;
                     var courseIds = await _notification.GetStudentCourseIdsAsync(userId);
 
