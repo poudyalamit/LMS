@@ -1,25 +1,43 @@
 # 📚 Kallu Learning Management System (LMS)
 
-A robust Learning Management System built with ASP.NET Core MVC, providing a clean and role-based platform for Teachers and Students to manage, access, and interact with courses and modules.
+A powerful and clean Learning Management System (LMS) built using **ASP.NET Core MVC**, designed to streamline teaching and learning experiences. Kallu LMS supports **role-based access** for Teachers and Students, enabling secure and organized course/module management.
+
+---
 
 ## 🚀 Features
 
-- 🔐 Role-based Authentication (`Teacher`, `Student`) using ASP.NET Identity
-- 📦 Course Management for Teachers (CRUD operations)
-- 📚 Module Management under each Course
-- 📝 Enrollment System for Students
-- 🔍 Search functionality by Course name or code
-- 🎯 Clean, responsive UI with Bootstrap 
+✅ **Role-Based Access Control**  
+- Teachers and Students login with different privileges  
+- ASP.NET Identity authentication system
+
+✅ **Course & Module Management**  
+- Teachers can create, update, and delete courses and modules  
+- Add rich descriptions and files to each module
+
+✅ **Student Enrollment**  
+- Students can enroll and deroll from courses  
+- View assigned modules and course details
+
+✅ **Real-Time Notifications**  
+- SignalR-based push notifications for module additions/deletions  
+- Toast-based frontend notifications
+
+✅ **Search & Navigation**  
+- Easily search courses by name or code  
+- Clean Bootstrap UI for a modern and responsive experience
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend**: ASP.NET Core MVC (.NET 8+)
-- **Authentication**: ASP.NET Core Identity
-- **Database**: SQL Server (via Entity Framework Core)
-- **Frontend**: Razor Views, Bootstrap 
-- **Others**: Dependency Injection, Role-based Authorization
+| Layer       | Technology                  |
+|-------------|------------------------------|
+| **Backend** | ASP.NET Core MVC (.NET 8+)   |
+| **Auth**    | ASP.NET Core Identity         |
+| **Frontend**| Razor Views, Bootstrap 5      |
+| **Database**| SQL Server (EF Core)         |
+| **Realtime**| SignalR (notifications)      |
+| **Other**   | DI, Role-based Authorization |
 
 ---
 
@@ -32,7 +50,25 @@ git clone https://github.com/poudyalamit/LMS.git
 cd LMS
 ```
 
-### 2. Open Solution File
-```bash
-LMS.sln
+### 2. Open the Project
+
+Open the LMS.sln file in Visual Studio.
+
+### 3.  Configure the Database
+
+Update your connection string in appsettings.json:
+
+``` bash
+"ConnectionStrings": {
+  "DefaultConnection": "Server=YOUR_SERVER;Database=LMSDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
 ```
+
+### 4. Run EF Core Migrations
+
+``` bash
+dotnet ef database update
+```
+Or allow Visual Studio to apply migrations automatically at runtime.
+
+
