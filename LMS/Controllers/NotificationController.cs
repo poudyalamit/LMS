@@ -111,22 +111,17 @@ namespace LMS.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [HttpPost]
         public async Task<IActionResult> Announce(string groupName, string message)
         {
             if (string.IsNullOrEmpty(groupName) || string.IsNullOrEmpty(message))
             {
                 return BadRequest("Group name and message cannot be empty.");
             }
-            if( groupName == "Teachers" || groupName == "Students")
-            {
-                await _notiRepo.SendNotification(groupName,message);
-            }
-            else
-            {
-                await _notiRepo.SendNotificationAllUsers(message);
-            }
-
-            return View();
+            string finalMessage = $"📢 New Announcement: {message}";
+            await _notiRepo.SendNotification(groupName,finalMessage);
+            TempData["Success"] = "✅ Announcement sent!";
+            return RedirectToAction(nameof(Index));
         }
     }
 }

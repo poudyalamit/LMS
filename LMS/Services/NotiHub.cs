@@ -26,14 +26,16 @@ namespace LMS.Services
 
         public override async Task OnConnectedAsync()
         {
-            if (Context.User != null)
+            if (Context.User != null && !Context.User.IsInRole("Admin"))
             {
                 if (Context.User.IsInRole("Teacher"))
                 {
                     await Groups.AddToGroupAsync(Context.ConnectionId, "Teachers");
+                    await Groups.AddToGroupAsync(Context.ConnectionId, "All");
                 }
                 else if (Context.User.IsInRole("Student"))
                 {
+                    await Groups.AddToGroupAsync(Context.ConnectionId, "All");
                     await Groups.AddToGroupAsync(Context.ConnectionId, "Students");
                     var userId = Context?.User?.Identity?.Name;
                     var courseIds = await _notification.GetStudentCourseIdsAsync(userId);

@@ -45,6 +45,7 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddTransient<IHomeRepository, HomeRepository>(); 
 builder.Services.AddTransient<IModuleRepository, ModuleRepository>(); 
 builder.Services.AddTransient<IEnrollRepository, EnrollRepository>();
+builder.Services.AddTransient<INotificationRepository, NotificationRepository>();
 builder.Services.AddTransient<IEmailService,EmailService>();
 builder.Services.AddTransient<INotificationService, NotiService>();
 

@@ -34,7 +34,17 @@ namespace LMS.Repositories
             {
                 userIds = students.Select(s => s.Id).ToList();
             }
-        
+            else
+            {
+                var admins = await _userManager.GetUsersInRoleAsync("Admin");
+                var adminIds = admins.Select(a => a.Id).ToHashSet();
+
+                 userIds = _userManager.Users
+                                       .Where(u => !adminIds.Contains(u.Id))
+                                       .Select(u => u.Id)
+                                       .ToList();
+            }
+
 
                 foreach (var userId in userIds)
                 {
@@ -53,33 +63,10 @@ namespace LMS.Repositories
             await _hubContext.Clients.Group(groupName).SendAsync("ReceiveNotification", message);
         }
 
-        public async Task SendNotificationAllUsers(string message)
-        {
-            var teachers = await _userManager.GetUsersInRoleAsync("Teacher");
-            var students = await _userManager.GetUsersInRoleAsync("Student");
-            var userIds = teachers.Select(t => t.Id)
-                              .Concat(students.Select(s => s.Id))
-                              .Distinct()
-                              .ToList();
-            foreach (var userId in userIds)
-            {
-                var notification = new Notification
-                {
-                    UserId = userId,
-                    Message = message,
-                    CreatedAt = DateTime.UtcNow,
-                    IsRead = false
-                };
-
-                _context.Notification.Add(notification);
-                await _hubContext.Clients.User(userId).SendAsync("ReceiveNotification", message);
-            }
-        }
     }
 
     public interface INotificationRepository
     {
         Task SendNotification(string groupName, string message);
-        Task SendNotificationAllUsers(string message);
     }
 }
