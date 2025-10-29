@@ -22,10 +22,6 @@ logs/
 .env.development
 .env.production
 
-# Configuration files (Sensitive data)
-appsettings.json
-appsettings.Development.json
-appsettings.Production.json
 
 # Secrets
 secrets.json
@@ -35,7 +31,6 @@ secrets/
 dist/
 publish/
 node_modules/
-wwwroot/
 bower_components/
 
 # Docker

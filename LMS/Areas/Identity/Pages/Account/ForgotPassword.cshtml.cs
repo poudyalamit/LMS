@@ -20,13 +20,11 @@ namespace LMS.Areas.Identity.Pages.Account
     public class ForgotPasswordModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IEmailSender _emailSender;
         private readonly IEmailService _emailService;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender, IEmailService emailService)
+        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailService emailService)
         {
             _userManager = userManager;
-            _emailSender = emailSender;
             _emailService = emailService;
         }
 

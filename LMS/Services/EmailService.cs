@@ -7,7 +7,7 @@ namespace LMS.Services
     {
         Task SendEmail(string to, string subject, string body, bool isHtml = false);
         Task SendConfirmationEmailAsync(string to, string confirmationLink);
-        Task SendForgotPassEmailAsync(string email, string resetLink);
+        Task SendForgotPassEmailAsync(string to, string resetLink);
     }
 
     public class EmailService : IEmailService
