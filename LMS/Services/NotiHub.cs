@@ -39,11 +39,14 @@ namespace LMS.Services
                     await Groups.AddToGroupAsync(Context.ConnectionId, "Students");
                     var userId = Context?.User?.Identity?.Name;
                     var courseIds = await _notification.GetStudentCourseIdsAsync(userId);
-
-                    foreach (var courseId in courseIds)
+                    if (courseIds == null)
                     {
-                        await Groups.AddToGroupAsync(Context.ConnectionId, $"course-{courseId}");
+                        return ;
                     }
+                    var tasks = courseIds.ToString().Select(courseId =>
+                        Groups.AddToGroupAsync(Context.ConnectionId, $"course-{courseId}")
+                    );
+                    await Task.WhenAll(tasks);
                 }
             }
             await base.OnConnectedAsync();

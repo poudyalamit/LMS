@@ -9,9 +9,9 @@ public class NotiService : INotificationService
         _context = context;
     }
 
-    public async Task<IEnumerable> GetStudentCourseIdsAsync(string studentId)
+    public async Task<IQueryable> GetStudentCourseIdsAsync(string studentId)
     {
-        return await _context.Enrollments
+        return (IQueryable)await _context.Enrollments
             .Where(e => e.StudentId == studentId)
             .Select(e => e.CourseId)
             .ToListAsync();
@@ -20,5 +20,5 @@ public class NotiService : INotificationService
 
 public interface INotificationService
 {
-    Task<IEnumerable> GetStudentCourseIdsAsync(string studentId);
+    Task<IQueryable> GetStudentCourseIdsAsync(string studentId);
 }

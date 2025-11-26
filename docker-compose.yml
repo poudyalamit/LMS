@@ -29,5 +29,8 @@ services:
             - DB_USER=sa
             - DB_PASSWORD=sqlserver@123
             - DB_NAME=lms_db
+            - ADMIN_EMAIL=admin@gmail.com
+            - ADMIN_PASS=Admin@123
+
         networks:
             - lms_network
